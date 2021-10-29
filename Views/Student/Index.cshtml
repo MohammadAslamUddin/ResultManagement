@@ -7,62 +7,75 @@
 
 }
 
-<h2>Student</h2>
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Index", "Student"))
 {
     @Html.AntiForgeryToken()
-    <img src="@Url.Content(Model.ImagePath)" class="rounded mx-auto d-block circular_image" />
-    <table class="table table-bordered table-responsive table-active table-striped table-hover">
-        <tbody>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Name)</td>
-                <td>@Html.DisplayFor(d => d.Student_Name)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Reg)</td>
-                <td>@Html.DisplayFor(d => d.Student_Reg)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Department_Name)</td>
-                <td>@Html.DisplayFor(d => d.Department_Name)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Email)</td>
-                <td>@Html.DisplayFor(d => d.Student_Email)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Contact)</td>
-                <td>@Html.DisplayFor(d => d.Student_Contact)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Address)</td>
-                <td>@Html.DisplayFor(d => d.Student_Address)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Birth_Date)</td>
-                <td>@Html.DisplayFor(d => d.Student_Birth_Date)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Father_Name)</td>
-                <td>@Html.DisplayFor(d => d.Student_Father_Name)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Father_Contact)</td>
-                <td>@Html.DisplayFor(d => d.Student_Father_Contact)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Mother_Name)</td>
-                <td>@Html.DisplayFor(d => d.Student_Mother_Name)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(n => n.Student_Mother_Contact)</td>
-                <td>@Html.DisplayFor(d => d.Student_Mother_Contact)</td>
-            </tr>
-        </tbody>
-    </table>
-    <center>
-        <button class="btn btn-outline-secondary btn_page" value="Update Password">@Html.ActionLink("Change Password", "UpdatePassword", new { id = Model.Student_Id, email = Model.Student_Email })</button>
-        <button class="btn btn-outline-secondary btn_page" value="Update Image">@Html.ActionLink("Change Image", "UpdateImage", new { id = Model.Student_Id })</button>
-        <button class="btn btn-outline-secondary btn_page" value="Show Result">@Html.ActionLink("Show Result", "GetResult", new { id = Model.Student_Id })</button>
-    </center>
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Url.Content(Model.ImagePath)">
+                        <span class="font-weight-bold">@Model.Student_Name</span>
+                        <span class="text-black-50">@Model.Student_Email</span>
+                        <span class="text-black-50">@Model.Student_Contact</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-center">Student's Profile</h4>
+                        </div>
+                        <table class="table table-bordered table-responsive table-active table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Reg)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Reg)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Department_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Department_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Address)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Address)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Birth_Date)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Birth_Date)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Father_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Father_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Father_Contact)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Father_Contact)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Mother_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Mother_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Student_Mother_Contact)</td>
+                                    <td>@Html.DisplayFor(d => d.Student_Mother_Contact)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <center>
+                            <button class="btn btn-outline-secondary btn_page" value="Update Password">@Html.ActionLink("Change Password", "UpdatePassword", new { id = Model.Student_Id, email = Model.Student_Email })</button>
+                            <button class="btn btn-outline-secondary btn_page" value="Update Image">@Html.ActionLink("Change Image", "UpdateImage", new { id = Model.Student_Id })</button>
+                            <button class="btn btn-outline-secondary btn_page" value="Show Result">@Html.ActionLink("Show Result", "GetResult", new { id = Model.Student_Id })</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
 }
+

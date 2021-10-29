@@ -6,15 +6,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Admin</title>
-    
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<body class="bdy">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-op6">
         <div class="container container-fluid">
-            @Html.ActionLink("Student", "Index", "Student", new { area = "" }, new { @class = "navbar-brand" })
+            <a href="/Teacher/Index"><img src="/Image/ustc-0.png" width="100px"/></a>
+            @Html.ActionLink("Student", "Index", "Student", new {area = ""}, new {@class = "navbar-brand"})
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,8 +33,9 @@
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="btn btnn" role="button" aria-disabled="true"><a>Dear - @User.Identity.Name</a></li>
-                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogOut", "signout", "Account")</li> }
+                        <li class="btn btnn" role="button" aria-disabled="true"><a href="/Student/Index">Dear - @User.Identity.Name</a></li>
+                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogOut", "signout", "Account")</li>
+                    }
                     else
                     {
                         <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>}
@@ -45,16 +46,17 @@
     </nav>
     <div class="container body-content upper-bodyy ">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <div class="text-center">
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
     </div>
 
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/jquery-3.6.0.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/bootstrap.bundle.js"></script>
-    @RenderSection("scripts", false);
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/scripts/core")
+@Scripts.Render("~/bundles/jqueryval")
+@RenderSection("scripts", required: false)
 </body>
 </html>

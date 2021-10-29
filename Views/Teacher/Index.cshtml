@@ -7,7 +7,7 @@
     List<Course> courses = ViewBag.courses;
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Teacher"))
 {
     @Html.AntiForgeryToken()
     <fieldset>
