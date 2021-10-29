@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+@model ResultManagement.Models.LogInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>SignIn</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="bg-light mt-4 p-4">
+                    @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "row g-3", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4>Welcome Back</h4>
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark float-end">Login</button>
+                        </div>
+                    }
+                    <hr class="mt-4">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+</body>
+</html>

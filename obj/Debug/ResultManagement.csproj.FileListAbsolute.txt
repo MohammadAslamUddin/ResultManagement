@@ -1,0 +1,114 @@
+F:\BITM\Practice\ResultManagement\bin\ResultManagement.dll.config
+F:\BITM\Practice\ResultManagement\bin\ResultManagement.dll
+F:\BITM\Practice\ResultManagement\bin\ResultManagement.pdb
+F:\BITM\Practice\ResultManagement\bin\roslyn\csc.exe
+F:\BITM\Practice\ResultManagement\bin\roslyn\csc.exe.config
+F:\BITM\Practice\ResultManagement\bin\roslyn\csc.rsp
+F:\BITM\Practice\ResultManagement\bin\roslyn\csi.exe
+F:\BITM\Practice\ResultManagement\bin\roslyn\csi.exe.config
+F:\BITM\Practice\ResultManagement\bin\roslyn\csi.rsp
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.Managed.Core.targets
+F:\BITM\Practice\ResultManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Collections.Immutable.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Reflection.Metadata.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Threading.Tasks.Extensions.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\vbc.exe
+F:\BITM\Practice\ResultManagement\bin\roslyn\vbc.exe.config
+F:\BITM\Practice\ResultManagement\bin\roslyn\vbc.rsp
+F:\BITM\Practice\ResultManagement\bin\roslyn\VBCSCompiler.exe
+F:\BITM\Practice\ResultManagement\bin\roslyn\VBCSCompiler.exe.config
+F:\BITM\Practice\ResultManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\BITM\Practice\ResultManagement\bin\Microsoft.Web.Infrastructure.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Helpers.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Mvc.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Razor.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.Deployment.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.Razor.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Razor.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.Deployment.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Webpages.Razor.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Helpers.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Mvc.xml
+F:\BITM\Practice\ResultManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\BITM\Practice\ResultManagement\obj\Debug\ResultManagement.csproj.CoreCompileInputs.cache
+F:\BITM\Practice\ResultManagement\obj\Debug\ResultManagement.csproj.CopyComplete
+F:\BITM\Practice\ResultManagement\obj\Debug\ResultManagement.dll
+F:\BITM\Practice\ResultManagement\obj\Debug\ResultManagement.pdb
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Buffers.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Memory.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Numerics.Vectors.dll
+F:\BITM\Practice\ResultManagement\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+F:\BITM\Practice\ResultManagement\bin\Antlr3.Runtime.dll
+F:\BITM\Practice\ResultManagement\bin\EntityFramework.dll
+F:\BITM\Practice\ResultManagement\bin\EntityFramework.SqlServer.dll
+F:\BITM\Practice\ResultManagement\bin\Newtonsoft.Json.dll
+F:\BITM\Practice\ResultManagement\bin\System.Web.Optimization.dll
+F:\BITM\Practice\ResultManagement\bin\WebGrease.dll
+F:\BITM\Practice\ResultManagement\bin\Antlr3.Runtime.pdb
+F:\BITM\Practice\ResultManagement\bin\EntityFramework.xml
+F:\BITM\Practice\ResultManagement\bin\EntityFramework.SqlServer.xml
+F:\BITM\Practice\ResultManagement\bin\Newtonsoft.Json.xml
+F:\BITM\Practice\ResultManagement\bin\System.Web.Optimization.xml
+F:\BITM\Practice\ResultManagement\bin\Rotativa.dll
+F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.dll
+F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.pdb
+F:\B. Sc\Project USTC\ResultManagement\bin\ResultManagement.dll.config
+F:\B. Sc\Project USTC\ResultManagement\bin\ResultManagement.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\ResultManagement.pdb
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csc.exe
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csc.exe.config
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csc.rsp
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csi.exe
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csi.exe.config
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\csi.rsp
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.Managed.Core.targets
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Buffers.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Collections.Immutable.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Memory.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Numerics.Vectors.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Reflection.Metadata.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\System.Threading.Tasks.Extensions.dll
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\vbc.exe
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\vbc.exe.config
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\vbc.rsp
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\VBCSCompiler.exe
+F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\VBCSCompiler.exe.config
+F:\B. Sc\Project USTC\ResultManagement\bin\Antlr3.Runtime.pdb
+F:\B. Sc\Project USTC\ResultManagement\bin\EntityFramework.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\EntityFramework.SqlServer.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\Newtonsoft.Json.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Optimization.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Razor.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Webpages.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Webpages.Deployment.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Webpages.Razor.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Helpers.xml
+F:\B. Sc\Project USTC\ResultManagement\bin\System.Web.Mvc.xml
+F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csprojAssemblyReference.cache
+F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csproj.CoreCompileInputs.cache
+F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csproj.CopyComplete

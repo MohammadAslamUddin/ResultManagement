@@ -1,0 +1,78 @@
+﻿@using ResultManagement.Models
+
+@{
+    ViewBag.Title = "ViewAllStudents";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<StudentInfo> students = ViewBag.Students;
+}
+
+<center><h1>All Students</h1></center>
+
+@using (Html.BeginForm("ViewAllStudents", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table table-borderless d-grid">
+        <tr>
+            <td><input type="text" id="Search" placeholder="Enter a Student name" /></td>
+            <td><input type="submit" value="Search" id="Submit" /></td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Registration</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.Student_Name</td>
+                    <td>@student.Student_Reg</td>
+                    <td>@student.Student_Email</td>
+                    <td>@student.Student_Contact</td>
+                    <td>@student.Student_Address</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#Search").on('change', function() {
+
+                var str = $("#Search").val();
+                var json = { stri: str };
+                $("#tbody").empty();
+                $.ajax({
+                    type: "Post",
+                    url: '@Url.Action("GetAllStudentsInfo", "Admin")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    error: function (error) {
+                        alert("No data found");
+                    },
+                    success: function (response) {
+                        $.each(response, function(key, value) {
+                            $("#tbody").append(
+                                '<tr><td>' + value.Student_Name +
+                                '</td><td>' + value.Student_Reg +
+                                '</td><td>' + value.Student_Email +
+                                '</td><td>' + value.Student_Contact +
+                                '</td><td>' + value.Student_Address +
+                                '</td><td><img src ="' + value.ImagePath +
+                                '" width="50px" height="50px"></td></tr>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

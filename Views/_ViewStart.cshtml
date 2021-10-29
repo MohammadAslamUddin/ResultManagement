@@ -1,0 +1,15 @@
+﻿@{
+    string controller = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+    switch (controller)
+    {
+        case "Student":
+            Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+            break;
+        case "Teacher":
+            Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+            break;
+    }
+}

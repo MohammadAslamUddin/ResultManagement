@@ -1,0 +1,62 @@
+﻿    @using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Teacher</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bdy">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-op6">
+        <div class="container container-fluid">
+            <a href="/Teacher/Index"><img src="/Image/ustc-0.png" width="100px"/></a>
+            @Html.ActionLink("Teacher", "Index", "Teacher", new {area = ""}, new {@class = "navbar-brand"})
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Teacher/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Teacher/InstractingCourse">Instracting Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Teacher/EnteredResults">Entered Results</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="btn btnn" role="button" aria-disabled="true"><a href="/Teacher/Index">Dear - @User.Identity.Name</a></li>
+                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogOut", "signout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content upper-bodyy">
+        @RenderBody()
+        <div class="fixed-bottom text-center">
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Result Management System of USTC</p>
+            </footer>
+        </div>
+    </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/scripts/core")
+@Scripts.Render("~/bundles/jqueryval")
+@RenderSection("scripts", required: false)
+</body>
+</html>

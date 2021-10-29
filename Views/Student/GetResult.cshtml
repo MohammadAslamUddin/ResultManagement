@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "GetResult";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h2>GetResult</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="First Semester">@Html.ActionLink("First Semester", "FirstSemester",new {semesterNo = 1})</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Second Semester">@Html.ActionLink("Second Semester", "SecondSemester", new { semesterNo = 2 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Third Semester">@Html.ActionLink("Third Semester", "Semester", new { semesterNo = 3 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Fourth Semester">@Html.ActionLink("Fourth Semester", "FourthSemester", new { semesterNo = 4 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Fifth Semester">@Html.ActionLink("Fifth Semester", "FifthSemester", new { semesterNo = 5 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Sixth Semester">@Html.ActionLink("Sixth Semester", "SixthSemester", new { semesterNo = 6 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Seventh Semester">@Html.ActionLink("Seventh Semester", "SeventhSemester", new { semesterNo = 7 })</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-outline-secondary btn_page" value="Eighth Semester">@Html.ActionLink("Eighth Semester", "EighthSemester", new { semesterNo = 8 })</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

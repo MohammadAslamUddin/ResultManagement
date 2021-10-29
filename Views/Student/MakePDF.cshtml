@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ResultManagement.Models.SemesterResult>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MakePDF</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+@Html.AntiForgeryToken()
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course_Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade_Point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latter_Grade)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course_Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade_Point)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latter_Grade)
+                </td>
+            </tr>
+        }
+    </table><table class="table table-bordered">
+        <tr>
+            <td>Final CGPA</td>
+            <td>@ViewBag.CGPA</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿
+@using ResultManagement.Models
+@model ResultManagement.Models.EntryResult
+@{
+    ViewBag.Title = "WrittenPartResult";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    TeacherInfo teacher = ViewBag.teacher;
+    Course course = ViewBag.courseinfo;
+    List<SelectListItem> students = ViewBag.Students;
+}
+
+@using (Html.BeginForm("WrittenPartResult", "Teacher", FormMethod.Post))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Url.Content(teacher.ImagePath)">
+                        <span>@teacher.Teacher_Name</span>
+                        <span class="text-black-50">@teacher.Teacher_Email</span>
+                        <span class="text-black-50">@teacher.Teacher_Contact</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Result Entry</h4>
+                        </div>
+                        @Html.Hidden("Course_Id", @course.CourseId)
+                        <table class="table table-borderless d-grid">
+                            <tbody>
+                                <tr>
+                                    <td>@Html.LabelFor(m => m.Course_Code)</td>
+                                    <td>@Html.TextBox("Course_Code", @course.CourseCode)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(m => m.Course_Title)</td>
+                                    <td>@Html.TextBox("Course_Title", @course.CourseTitle)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(m => m.Course_Credit)</td>
+                                    <td>@Html.TextBox("Course_Credit", @course.CoursePoint)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Student_Reg)</td>
+                                    <td>@Html.DropDownListFor(m => m.Student_Reg, students, new { id = "studentreg" })</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Student_Name)</td>
+                                    <td>@Html.TextBoxFor(n => n.Student_Name, new { id = "sname" })</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Student_Email)</td>
+                                    <td>@Html.TextBoxFor(n => n.Student_Email, new { id = "semail" })</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.ClassTest1)</td>
+                                    <td>@Html.TextBoxFor(n => n.ClassTest1, new { id = "ct1" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.ClassTest1)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.ClassTest2)</td>
+                                    <td>@Html.TextBoxFor(n => n.ClassTest2, new { id = "ct2" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.ClassTest2)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.ClassTest3)</td>
+                                    <td>@Html.TextBoxFor(n => n.ClassTest3, new { id = "ct3" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.ClassTest3)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.PartA)</td>
+                                    <td>@Html.TextBoxFor(n => n.PartA, new { id = "pa" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.PartA)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.PartB)</td>
+                                    <td>@Html.TextBoxFor(n => n.PartB, new { id = "pb" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.PartB)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Attendence)</td>
+                                    <td>@Html.TextBoxFor(n => n.Attendence, new { id = "attand" })</td>
+                                    <td>@Html.ValidationMessageFor(n => n.Attendence)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" value="Save" class="btn btn-outline-secondary btn_page"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label id="message" class="text-danger">@ViewBag.message</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('#studentreg').on('change',
+                function() {
+                    $('#sname').val('');
+                    $('#semail').val('');
+                    $('#ct1').val('');
+                    $('#ct2').val('');
+                    $('#ct3').val('');
+                    $('#pa').val('');
+                    $('#pb').val('');
+                    $('#attand').val('');
+
+
+                    $('#sname').prop('disabled', true);
+                    $('#semail').prop('disabled', true);
+                    $('#ct1').prop('disabled', true);
+                    $('#ct2').prop('disabled', true);
+                    $('#ct3').prop('disabled', true);
+                    $('#pa').prop('disabled', true);
+                    $('#pb').prop('disabled', true);
+                    $('#attand').prop('disabled', true);
+
+                    var sreg = $('#studentreg').val();
+                    var json = { id: sreg };
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStudentDetails", "Teacher")',
+                        contentType: 'application/json',
+                        data: JSON.stringify(json),
+                        success: function (response) {
+                            $('#ct1').prop('disabled', false);
+                            $('#ct2').prop('disabled', false);
+                            $('#ct3').prop('disabled', false);
+                            $('#pa').prop('disabled', false);
+                            $('#pb').prop('disabled', false);
+                            $('#attand').prop('disabled', false);
+                            $('#sname').val(response["Student_Name"]);
+                            $('#semail').val(response['Student_Email']);
+                        }
+                    });
+                });
+        });
+        $('#Course_Code').attr('disabled','disabled');
+        $('#Course_Title').attr('disabled','disabled');
+        $('#Course_Credit').attr('disabled','disabled');
+    </script>
+}

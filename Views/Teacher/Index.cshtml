@@ -1,0 +1,64 @@
+﻿@using ResultManagement.Models
+@model ResultManagement.Models.TeacherInfo
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    List<Course> courses = ViewBag.courses;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Url.Content(Model.ImagePath)">
+                        <span class="font-weight-bold">@Model.Teacher_Name</span>
+                        <span class="text-black-50">@Model.Teacher_Email</span>
+                        <span class="text-black-50">@Model.Teacher_Contact</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Teacher's Profile</h4>
+                        </div>
+                        <table class="table table-borderless d-grid">
+                            <tbody>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Department_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Department_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Designation)</td>
+                                    <td>@Html.DisplayFor(d => d.Designation)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Teacher_Address)</td>
+                                    <td>@Html.DisplayFor(d => d.Teacher_Address)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Teacher_Birth_Date)</td>
+                                    <td>@Html.DisplayFor(d => d.Teacher_Birth_Date)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Teacher_Father_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Teacher_Father_Name)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(n => n.Teacher_Mother_Name)</td>
+                                    <td>@Html.DisplayFor(d => d.Teacher_Mother_Name)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-outline-secondary btn_page" value="Update Password">@Html.ActionLink("Change Password", "UpdatePassword", new { id = Model.Teacher_Id, email = Model.Teacher_Email })</button>
+                        <button class="btn btn-outline-secondary btn_page" value="Update Image">@Html.ActionLink("Change Image", "UpdateImage", new { id = Model.Teacher_Id })</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
