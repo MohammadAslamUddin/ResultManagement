@@ -1,58 +1,78 @@
-﻿
+﻿@using ResultManagement.Models
+
 @{
     ViewBag.Title = "GetResult";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    StudentInfo student = ViewBag.Student;
 }
 
-<h2>GetResult</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("GetResult", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <table class="table table-bordered">
-        <tbody>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="First Semester">@Html.ActionLink("First Semester", "FirstSemester",new {semesterNo = 1})</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Second Semester">@Html.ActionLink("Second Semester", "SecondSemester", new { semesterNo = 2 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Third Semester">@Html.ActionLink("Third Semester", "Semester", new { semesterNo = 3 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Fourth Semester">@Html.ActionLink("Fourth Semester", "FourthSemester", new { semesterNo = 4 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Fifth Semester">@Html.ActionLink("Fifth Semester", "FifthSemester", new { semesterNo = 5 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Sixth Semester">@Html.ActionLink("Sixth Semester", "SixthSemester", new { semesterNo = 6 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Seventh Semester">@Html.ActionLink("Seventh Semester", "SeventhSemester", new { semesterNo = 7 })</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-outline-secondary btn_page" value="Eighth Semester">@Html.ActionLink("Eighth Semester", "EighthSemester", new { semesterNo = 8 })</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Url.Content(student.ImagePath)">
+                        <span class="font-weight-bold">@student.Student_Name</span>
+                        <span class="text-black-50">@student.Student_Email</span>
+                        <span class="text-black-50">@student.Student_Contact</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-center">Student's Semester Results</h4>
+                        </div>
+                        <table class="table table-borderless table-responsive">
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="First Semester">@Html.ActionLink("First Semester", "FirstSemester", new { semesterNo = 1 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Second Semester">@Html.ActionLink("Second Semester", "SecondSemester", new { semesterNo = 2 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Third Semester">@Html.ActionLink("Third Semester", "Semester", new { semesterNo = 3 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Fourth Semester">@Html.ActionLink("Fourth Semester", "FourthSemester", new { semesterNo = 4 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Fifth Semester">@Html.ActionLink("Fifth Semester", "FifthSemester", new { semesterNo = 5 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Sixth Semester">@Html.ActionLink("Sixth Semester", "SixthSemester", new { semesterNo = 6 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Seventh Semester">@Html.ActionLink("Seventh Semester", "SeventhSemester", new { semesterNo = 7 })</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="btn btn-outline-secondary btn_page" value="Eighth Semester">@Html.ActionLink("Eighth Semester", "EighthSemester", new { semesterNo = 8 })</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
 }

@@ -277,7 +277,7 @@ namespace ResultManagement.Gateway
             int id = GetIdByEmail(email);
 
             Query =
-                "SELECT course_code,course_title, result_credit,ct_1,ct_2,ct_3,part_a,part_b,latter_grade,course_credit FROM Result inner join Course on Result.course_id=Course.course_id " +
+                "SELECT course_code,course_title, result_credit,ct_1,ct_2,ct_3,part_a,part_b,latter_grade,course_credit,attendence FROM Result inner join Course on Result.course_id=Course.course_id " +
                 "inner join AssignCourseToDepartment AS ACTD on Course.course_id = ACTD.course_id " +
                 "WHERE Result.student_id = @id AND ACTD.semester_id = @semes_id;";
 
@@ -313,6 +313,7 @@ namespace ResultManagement.Gateway
                 course.Grade_Point = Convert.ToDouble(Reader["result_credit"]);
                 course.Latter_Grade = Reader["latter_grade"].ToString();
                 course.Course_Credit = Convert.ToDouble(Reader["course_credit"]);
+                course.Attendence = Convert.ToDouble(Reader["attendence"]);
 
                 credit_hour += Convert.ToDouble(Reader["course_credit"]);
 
@@ -392,7 +393,7 @@ namespace ResultManagement.Gateway
                 courses.Add(course);
             }
 
-            double cgpa = (double)multipling_credit / credit_hour;
+            double cgpa = Math.Round((double)multipling_credit / credit_hour, 2);
             Reader.Close();
 
             Connection.Close();

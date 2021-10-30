@@ -13,6 +13,7 @@
         public double Part_B { get; set; }
         public double Grade_Point { get; set; }
         public string Latter_Grade { get; set; }
+        public double Attendence { get; set; }
         public double Total_Grade { get; set; }
         public double CGPA { get; set; }
         public double Course_Credit { get; set; }

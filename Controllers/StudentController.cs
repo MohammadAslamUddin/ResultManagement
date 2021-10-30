@@ -142,6 +142,7 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult GetResult()
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
             return View();
         }
 
@@ -163,6 +164,8 @@ namespace ResultManagement.Controllers
 
         public ActionResult MakePdf(int? semesterNo)
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
+
             List<SemesterResult> semesterCourseList = _studentManager.SemesterCoursesBySemesterId(semesterNo);
             ViewBag.CGPA = _studentManager.GetCGPA(semesterNo);
 
