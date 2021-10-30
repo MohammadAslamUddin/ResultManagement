@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-center">Student's Image Update</h4>
+                            <h4 class="text-center">Student's Result</h4>
                         </div>
                         <table class="table table-bordered table-responsive">
                             <tr>
@@ -92,12 +92,10 @@
                                 <td>Final CGPA</td>
                                 <td>@ViewBag.CGPA</td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td>@Html.ActionLink("Download Result", "ConvertToPdf", new { semesterNo = @ViewBag.Semester })</td>
-                            </tr>
                         </table>
-                    </div>
+                        <center><div class="btn btn-outline-secondary btn_page">@Html.ActionLink("Download Result", "ConvertToPdf", new { semesterNo = @ViewBag.Semester })</div>
+                        </center>
+                        </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-﻿@using System.Web.Optimization
+﻿@using System.Drawing
+@using System.Web.Optimization
 @using ResultManagement.Models
 @model IEnumerable<ResultManagement.Models.SemesterResult>
 
@@ -12,49 +13,78 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>MakePDF</title>
+    <link href='https://fonts.googleapis.com/css?family=Adamina' rel='stylesheet'>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            font-family: 'Adamina';
+            font-size: 19px;
+        }
+    </style>
 </head>
 <body>
     @Html.AntiForgeryToken()
-    <table class="table table-bordered">
+<center>
+    <img src="/Image/ustc-0.png" width="300" />
+    <h1>University Of Science & Technology Chittagong</h1>
+    <h2>@student.Department_Name</h2>
+</center>
+    <br>
+    <br>
+<table class="table table-borderless table-responsive">
+    <tr>
+        <td><text>Name</text></td>
+        <td>@student.Student_Name</td>
+    </tr>
+    <tr>
+        <td><text>Registration No</text></td>
+        <td>@student.Student_Reg</td>
+    </tr>
+    <tr>
+        <td><text>CGPA</text></td>
+        <td>@ViewBag.CGPA</td>
+</tr>
+</table>
+<br>
+<br>
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade_Point)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latter_Grade)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Course_Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Course_Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grade_Point)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latter_Grade)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course_Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade_Point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latter_Grade)
+            </td>
         </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course_Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course_Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade_Point)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latter_Grade)
-                </td>
-            </tr>
-        }
-    </table>
-    <table class="table table-bordered">
-        <tr>
-            <td>Final CGPA</td>
-            <td>@ViewBag.CGPA</td>
-        </tr>
-    </table>
+    }
+</table>
+<footer class="text-center fixed-bottom">
+    <hr/>
+    <p>&copy; USTC App - @DateTime.Now.ToString("F")</p>
+    <hr/>
+    </footer>
 </body>
 </html>
