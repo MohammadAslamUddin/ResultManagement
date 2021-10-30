@@ -69,6 +69,7 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult UpdatePassword(int? id, string email)
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
             if (email == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +82,7 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdatePassword(UpdatePassword updatePassword)
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
             if (ModelState.IsValid)
             {
                 string rowAffected = _studentManager.UpdatePassword(updatePassword);
@@ -100,6 +102,7 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult UpdateImage(int? id)
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -111,6 +114,7 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdateImage(UpdateImage image)
         {
+            ViewBag.Student = _studentManager.GetStudentDetails();
             if (ModelState.IsValid)
             {
                 string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
