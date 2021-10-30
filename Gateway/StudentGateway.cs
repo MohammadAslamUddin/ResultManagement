@@ -13,16 +13,16 @@ namespace ResultManagement.Gateway
         private UpdatePassword _updatePassword;
         private UpdateImage _updateImage;
 
+        private readonly string _email = HttpContext.Current.User.Identity.Name.ToString();
         public StudentInfo GetStudentDetails()
         {
-            string email = HttpContext.Current.User.Identity.Name.ToString();
 
             Query = "SELECT * FROM Student inner join Department on Student.student_department = Department.department_id WHERE student_email = @email";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
             Command.Parameters.Add("email", SqlDbType.VarChar);
-            Command.Parameters["email"].Value = email;
+            Command.Parameters["email"].Value = _email;
 
             Connection.Open();
 
@@ -273,13 +273,13 @@ namespace ResultManagement.Gateway
 
         public List<SemesterResult> SemesterCoursesBySemesterId(int? semesterNo)
         {
-            string email = HttpContext.Current.User.Identity.Name.ToString();
-            int id = GetIdByEmail(email);
+            int id = GetIdByEmail(_email);
 
             Query =
-                "SELECT course_code,course_title, result_credit,ct_1,ct_2,ct_3,part_a,part_b,latter_grade,course_credit,attendence FROM Result inner join Course on Result.course_id=Course.course_id " +
-                "inner join AssignCourseToDepartment AS ACTD on Course.course_id = ACTD.course_id " +
-                "WHERE Result.student_id = @id AND ACTD.semester_id = @semes_id;";
+                "SELECT course_code,course_title,course_credit,ct_1,ct_2,ct_3,attendence,part_a,part_b,total_number,result_credit,latter_grade FROM AssignCourseToDepartment AS ASTD " +
+                "INNER JOIN COURSE ON ASTD.course_id = Course.course_id " +
+                "FULL JOIN Result ON Course.course_id = Result.course_id " +
+                "WHERE ASTD.semester_id=@semes_id AND Result.student_id = @id";
 
             Command = new SqlCommand(Query, Connection);
 
@@ -353,13 +353,13 @@ namespace ResultManagement.Gateway
 
         public double GetCGPA(int? semesterNo)
         {
-            string email = HttpContext.Current.User.Identity.Name.ToString();
-            int id = GetIdByEmail(email);
+            int id = GetIdByEmail(_email);
 
             Query =
-                "SELECT course_code,course_title, result_credit,ct_1,ct_2,ct_3,part_a,part_b,latter_grade,course_credit FROM Result inner join Course on Result.course_id=Course.course_id " +
-                "inner join AssignCourseToDepartment AS ACTD on Course.course_id = ACTD.course_id " +
-                "WHERE Result.student_id = @id AND ACTD.semester_id = @semes_id;";
+                "SELECT course_credit,result_credit FROM AssignCourseToDepartment AS ASTD " +
+                "INNER JOIN COURSE ON ASTD.course_id = Course.course_id " +
+                "FULL JOIN Result ON Course.course_id = Result.course_id " +
+                "WHERE ASTD.semester_id=@semes_id AND Result.student_id = @id";
 
             Command = new SqlCommand(Query, Connection);
 
