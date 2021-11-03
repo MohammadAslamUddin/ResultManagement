@@ -17,34 +17,39 @@
 </head>
 <body id="bg-signIn">
 <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-10">
-                <div class="custom-bg mt-5 p-5">
-                    @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "row g-3", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <h4>Welcome Back</h4>
-                        <div class="col-12">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-12">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2" })
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-10">
+            <div class="custom-bg mt-5 p-5">
+                @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "row g-3", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Welcome Back</h4>
+                    <div class="col-12">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email,"", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-12">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
 
-                        <div class="col-11">
-                            <button type="submit" class="btn btn-outline-light float-end">Login</button>
-                        </div>
-                    }   
-                </div>
+                    <div class="col-11">
+                        <button type="submit" class="btn btn-outline-light float-end">Login</button>
+                    </div>
+                }   
             </div>
         </div>
     </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/scripts/core")
 @Scripts.Render("~/bundles/jqueryval")
+
 </body>
 </html>

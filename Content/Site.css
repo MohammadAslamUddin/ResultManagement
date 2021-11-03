@@ -204,7 +204,8 @@ input, select, textarea {
 #bg-signIn {
     background-image: url("/Image/ustc.jpg");
     background-repeat: no-repeat;
-    background-size: 100% 100%; 
+    background-size: 100% 100%;
+
 }
 
 .custom-bg {
