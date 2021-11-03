@@ -10,8 +10,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="bdy">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-op6">
+<body class="bdystu">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bgstu">
         <div class="container container-fluid">
             <a href="/Teacher/Index"><img src="/Image/ustc-0.png" width="100px"/></a>
             @Html.ActionLink("Student", "Index", "Student", new {area = ""}, new {@class = "navbar-brand"})
@@ -38,7 +38,7 @@
                     }
                     else
                     {
-                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>}
+                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>
                     }
                 </ul>
             </div>
@@ -46,10 +46,10 @@
     </nav>
     <div class="container body-content upper-bodyy ">
         @RenderBody()
-        <div class="text-center">
+        <div class="text-center fixed-bottom">
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; @DateTime.Now.Year - Result Management System of USTC</p>
             </footer>
         </div>
     </div>
