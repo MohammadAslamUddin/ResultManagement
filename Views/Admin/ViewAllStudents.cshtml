@@ -12,8 +12,7 @@
 {
     <table class="table table-borderless d-grid">
         <tr>
-            <td><input type="text" id="Search" placeholder="Enter a Student name" /></td>
-            <td><input type="submit" value="Search" id="Submit" /></td>
+            <td><input type="text" id="search" placeholder="Enter a Student name" /></td>
         </tr>
     </table>
     <table class="table table-bordered">
@@ -24,7 +23,6 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Address</th>
-                <th>Picture</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -36,7 +34,6 @@
                     <td>@student.Student_Email</td>
                     <td>@student.Student_Contact</td>
                     <td>@student.Student_Address</td>
-                    <td></td>
                 </tr>
             }
         </tbody>
@@ -46,10 +43,11 @@
 {
     <script type="text/javascript">
         $(function () {
-            $("#Search").on('change', function() {
+            $("#search").on('autocomplete', function() {
 
-                var str = $("#Search").val();
+                var str = $("#search").val();
                 var json = { stri: str };
+
                 $("#tbody").empty();
                 $.ajax({
                     type: "Post",
@@ -67,8 +65,7 @@
                                 '</td><td>' + value.Student_Email +
                                 '</td><td>' + value.Student_Contact +
                                 '</td><td>' + value.Student_Address +
-                                '</td><td><img src ="' + value.ImagePath +
-                                '" width="50px" height="50px"></td></tr>');
+                                '</td></tr>');
                         });
                     }
                 });
