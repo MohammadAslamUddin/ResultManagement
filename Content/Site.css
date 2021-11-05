@@ -84,6 +84,24 @@ input, select, textarea {
     border: 1px solid #ced4da;
     padding: .375rem .375rem;
 }
+
+.btnforResult {
+    color: #000000;
+    margin: 5px 0px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.btnforResult a{
+    text-decoration: none;
+    color: #000000;
+}
+.btnforResult a:hover {
+    color: #ced4da;
+}
+
+
+
 .btn_page {
     color: black;
 }
