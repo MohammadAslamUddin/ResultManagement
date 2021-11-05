@@ -213,3 +213,30 @@ input, select, textarea {
     background-color: #000;
     opacity: .75;
 }
+
+.inputsearch {
+    padding: 5px 10px;
+    font-size: 17px;
+    border: 1px solid #212529;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.btnforSeach {
+    float: left;
+    width: 20%;
+    padding: 5px 5px;
+    background: white;
+    color: black;
+    font-size: 17px;
+    border: 1px solid #212529;
+    border-left: none;
+    cursor: pointer;
+}
+
+.btnforSeach:hover {
+    color: #ffffff;
+    background: #212529;
+    opacity: 0.9;
+}

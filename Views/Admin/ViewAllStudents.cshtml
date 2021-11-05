@@ -13,8 +13,8 @@
     <table class="table table-borderless d-grid">
         <tr>
             <td>
-                <input type="text" id="search" placeholder="Enter a Student name"/>
-        <button type="submit"><i class="fa fa-search"></i></button>
+                <input class="inputsearch" type="text" id="search" name="search" placeholder="Enter a Student name">
+                <button type="button" id="searchfabutton" class="btnforSeach"><i class="fa fa-search"></i></button>
             </td>
         </tr>
     </table>
@@ -26,6 +26,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Address</th>
+                <th>Semester No</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -37,6 +38,7 @@
                     <td>@student.Student_Email</td>
                     <td>@student.Student_Contact</td>
                     <td>@student.Student_Address</td>
+                    <td>@student.Student_Semester</td>
                 </tr>
             }
         </tbody>
@@ -46,7 +48,7 @@
 {
     <script type="text/javascript">
         $(function () {
-            $("#search").on('change', function() {
+            $("#searchfabutton").on('click', function() {
 
                 var str = $("#search").val();
                 var json = { stri: str };
@@ -68,6 +70,7 @@
                                 '</td><td>' + value.Student_Email +
                                 '</td><td>' + value.Student_Contact +
                                 '</td><td>' + value.Student_Address +
+                                '</td><td>' + value.Student_Semester +
                                 '</td></tr>');
                         });
                     }

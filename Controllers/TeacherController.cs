@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ResultManagement.Controllers
 {
-    [Authorize(Roles = "Teacher, Admin")]
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         private readonly TeacherManager _teacherManager;

@@ -11,12 +11,12 @@ namespace ResultManagement.Gateway
         {
             if (stri == "")
             {
-                Query = "SELECT student_id,student_name, student_reg_no,student_email,student_contact, student_address, student_image FROM Student";
+                Query = "SELECT student_id,student_name, student_reg_no,student_email,student_contact, student_address, student_semester, student_image FROM Student";
             }
             else
             {
                 Query =
-                    "SELECT student_id,student_name, student_reg_no,student_email,student_contact, student_address, student_image FROM Student WHERE student_name LIKE @name";
+                    "SELECT student_id,student_name, student_reg_no,student_email,student_contact, student_address, student_semester, student_image FROM Student WHERE student_name LIKE @name";
             }
 
             Command = new SqlCommand(Query, Connection);
@@ -36,6 +36,7 @@ namespace ResultManagement.Gateway
                 student.Student_Email = Reader["student_email"].ToString();
                 student.Student_Contact = Reader["student_contact"].ToString();
                 student.Student_Address = Reader["student_address"].ToString();
+                student.Student_Semester = (int)Reader["student_semester"];
                 student.ImagePath = Reader["student_image"].ToString();
 
                 students.Add(student);

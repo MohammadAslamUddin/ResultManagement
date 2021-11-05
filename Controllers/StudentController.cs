@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ResultManagement.Controllers
 {
-    [Authorize(Roles = "Student, Admin")]
+    [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
         private readonly StudentManager _studentManager;

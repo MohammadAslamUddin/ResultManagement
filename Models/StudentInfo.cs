@@ -89,6 +89,9 @@ namespace ResultManagement.Models
         public string Student_Confirm_Password { get; set; }
 
 
+        public int Student_Semester { get; set; }
+
+
         [Display(Name = "Type")]
         [Required(ErrorMessage = "Please Select a type")]
         public int Student_Type { get; set; }
