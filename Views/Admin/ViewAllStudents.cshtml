@@ -12,7 +12,10 @@
 {
     <table class="table table-borderless d-grid">
         <tr>
-            <td><input type="text" id="search" placeholder="Enter a Student name" /></td>
+            <td>
+                <input type="text" id="search" placeholder="Enter a Student name"/>
+        <button type="submit"><i class="fa fa-search"></i></button>
+            </td>
         </tr>
     </table>
     <table class="table table-bordered">
@@ -43,7 +46,7 @@
 {
     <script type="text/javascript">
         $(function () {
-            $("#search").on('autocomplete', function() {
+            $("#search").on('change', function() {
 
                 var str = $("#search").val();
                 var json = { stri: str };

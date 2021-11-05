@@ -35,6 +35,9 @@ namespace ResultManagement
                 "~/Scripts/mdb.min.js",
                 "~/Scripts/respond.js"));
 
+            bundles.Add(new Bundle("~/Content/FontAwesome").Include(
+                "~/Content/font-awesome.min.css"));
+
             BundleTable.EnableOptimizations = true;
         }
     }
