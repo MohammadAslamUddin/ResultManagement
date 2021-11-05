@@ -341,6 +341,9 @@
     <Content Include="Views\Teacher\PracticalPartResult.cshtml" />
     <Content Include="Views\Teacher\EnteredResults.cshtml" />
     <Content Include="Views\Teacher\ShowResult.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\StudentDetails.cshtml" />
+    <Content Include="Views\Admin\ViewAllTeachers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

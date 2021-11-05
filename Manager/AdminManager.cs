@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ResultManagement.Gateway;
+﻿using ResultManagement.Gateway;
 using ResultManagement.Models;
+using System.Collections.Generic;
 
 namespace ResultManagement.Manager
 {
@@ -19,6 +16,21 @@ namespace ResultManagement.Manager
         public List<StudentInfo> GetStudentInfoBySearching(string stri)
         {
             return _adminGateway.GetStudentInfoBySearching(stri);
+        }
+
+        public StudentInfo StudentDetails(int? id)
+        {
+            return _adminGateway.StudentDetails(id);
+        }
+
+        public List<TeacherInfo> ViewAllTeachers(string stri)
+        {
+            return _adminGateway.ViewAllTeachers(stri);
+        }
+
+        public TeacherInfo TeacherDetails(int? id)
+        {
+            return _adminGateway.TeacherDetails(id);
         }
     }
 }

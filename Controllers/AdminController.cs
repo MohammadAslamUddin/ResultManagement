@@ -16,17 +16,44 @@ namespace ResultManagement.Controllers
         }
         // GET: Admin
         [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         public ActionResult ViewAllStudents()
         {
             ViewBag.Students = _adminManager.GetStudentInfoBySearching("");
             return View();
         }
 
-        [HttpPost]
-        public JsonResult GetAllStudentsInfo(string stri)
+
+        [HttpGet]
+        public ActionResult ViewAllTeachers()
         {
-            List<StudentInfo> students = _adminManager.GetStudentInfoBySearching(stri);
-            return Json(students);
+            List<TeacherInfo> Teachers = _adminManager.ViewAllTeachers("");
+            return View(Teachers);
+        }
+
+        //[HttpPost]
+        //public JsonResult GetAllStudentsInfo(string stri)
+        //{
+        //    List<StudentInfo> students = _adminManager.GetStudentInfoBySearching(stri);
+        //    return Json(students);
+        //}
+        [HttpGet]
+        public ActionResult StudentDetails(int? id)
+        {
+            StudentInfo student = _adminManager.StudentDetails(id);
+            return View(student);
+        }
+        [HttpGet]
+        public ActionResult TeacherDetails(int? id)
+        {
+            TeacherInfo teacher = _adminManager.TeacherDetails(id);
+            return View(teacher);
         }
     }
 }

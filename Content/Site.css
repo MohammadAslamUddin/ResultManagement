@@ -1,4 +1,8 @@
-﻿/* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
+﻿
+
+/* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
+
+
 html,
 body,
 .view {
@@ -243,7 +247,7 @@ input, select, textarea {
 
 .btnforSeach {
     float: left;
-    width: 20%;
+    width: 4%;
     padding: 5px 5px;
     background: white;
     color: black;
@@ -257,4 +261,15 @@ input, select, textarea {
     color: #ffffff;
     background: #212529;
     opacity: 0.9;
+}
+
+.indexdesignforAdmin {
+    font-family: 'Aladin', cursive;
+    /*font-family: 'Fruktur', cursive;*/
+    /*font-family: 'Mochiy Pop One', sans-serif;*/
+    font-size: 30px;
+}
+
+.searchform {
+    text-align: right;
 }

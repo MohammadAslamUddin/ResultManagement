@@ -6,6 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aladin&family=Fruktur&family=Mochiy+Pop+P+One&display=swap" rel="stylesheet"> 
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -15,41 +18,41 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container container-fluid">
             <a href="/Admin/ViewAllStudents"><img src="/Image/ustc-0.png" width="100px" /></a>
-            @Html.ActionLink("Admin", "ViewAllStudents", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/Admin/ViewAllStudents">Home</a>
+                        <a class="nav-link" aria-current="page" href="/Admin/Index">Home</a>
                     </li>
-                    @*<li class="nav-item">
-            <a class="nav-link" href="/Home/About">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Home/Contact">Contact</a>
-        </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ViewAllStudents">Student List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/ViewAllTeachers">Teacher List</a>
+                        </li>
                 </ul>
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-        <li class="btn btnn" role="button" aria-disabled="true"><a>Dear - @User.Identity.Name</a></li>
+                        <li class="btn btnn" role="button" aria-disabled="true"><a>Admin</a></li>
                         <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogOut", "signout", "Account")</li>
- }
+                     }
                     else
                     {
-        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>
-}
+                        <li class="btn btnn" role="button" aria-disabled="true">@Html.ActionLink("LogIn", "SignIn", "Account")</li>
+                    }
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content upper-bodyy">
         @RenderBody()
-        <hr />
+        
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
         </footer>
     </div>
 

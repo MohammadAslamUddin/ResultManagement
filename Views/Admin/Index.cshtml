@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "indexdesignforAdmin" }))
+{
+    <center>
+        <img src="/Image/ustc-0.png" width="300" />
+        <p style="font-size: 70px">University Of Science & Technology Chittagong</p>
+        <p style="font-size: 50px">Faculty of Science & Engineering Technology(FSET)</p>
+        <p>Welcome on the USTC Result Management App </p>
+    </center>
+}

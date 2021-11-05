@@ -10,15 +10,14 @@
 
 @using (Html.BeginForm("ViewAllStudents", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <table class="table table-borderless d-grid">
-        <tr>
-            <td>
-                <input class="inputsearch" type="text" id="search" name="search" placeholder="Enter a Student name">
-                <button type="button" id="searchfabutton" class="btnforSeach"><i class="fa fa-search"></i></button>
-            </td>
-        </tr>
-    </table>
-    <table class="table table-bordered">
+    @*<div class="col-md-10 col-sm-10">
+        <div class="input-group">
+            <input class="inputsearch" type="text" id="search" name="search" placeholder="Enter a Student name">
+            <button type="button" id="searchfabutton" class="btnforSeach"><i class="fa fa-search"></i></button>
+        </div>
+    </div>*@
+    <br/>
+    <table class="table table-bordered table-responsive">
         <thead>
             <tr>
                 <th>Name</th>
@@ -27,6 +26,7 @@
                 <th>Mobile</th>
                 <th>Address</th>
                 <th>Semester No</th>
+                <th>Buttons</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -39,12 +39,14 @@
                     <td>@student.Student_Contact</td>
                     <td>@student.Student_Address</td>
                     <td>@student.Student_Semester</td>
+                    <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new { id = @student.Student_Id })</button></td>
                 </tr>
             }
         </tbody>
     </table>
 }
-@section scripts
+
+@*@section scripts
 {
     <script type="text/javascript">
         $(function () {
@@ -59,11 +61,11 @@
                     url: '@Url.Action("GetAllStudentsInfo", "Admin")',
                     contentType: 'application/json',
                     data: JSON.stringify(json),
-                    error: function (error) {
+                    error: function (response) {
                         alert("No data found");
                     },
                     success: function (response) {
-                        $.each(response, function(key, value) {
+                        $.each(response, function (key, value) {
                             $("#tbody").append(
                                 '<tr><td>' + value.Student_Name +
                                 '</td><td>' + value.Student_Reg +
@@ -71,11 +73,11 @@
                                 '</td><td>' + value.Student_Contact +
                                 '</td><td>' + value.Student_Address +
                                 '</td><td>' + value.Student_Semester +
-                                '</td></tr>');
+                                "</td><td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new{id = value.Student_Id })</button></td></tr>");
                         });
                     }
                 });
             });
         });
     </script>
-}
+}*@

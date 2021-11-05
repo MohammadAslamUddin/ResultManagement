@@ -86,5 +86,9 @@ namespace ResultManagement.Models
 
         public HttpPostedFileBase ImageFile { get; set; }
 
+
+        public float Teacher_RemainingCredit { get; set; }
+        public float Teacher_TotalCredt { get; set; }
+
     }
 }
