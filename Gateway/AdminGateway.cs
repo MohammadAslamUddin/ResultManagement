@@ -82,6 +82,7 @@ namespace ResultManagement.Gateway
                 _student.Department_Name = Reader["department_title"].ToString();
                 _student.Department_Code = Reader["department_code"].ToString();
                 _student.ImagePath = Reader["student_image"].ToString();
+                _student.Student_Semester = (int)Reader["student_semester"];
             }
             Reader.Close();
             Connection.Close();
@@ -136,7 +137,41 @@ namespace ResultManagement.Gateway
 
         public TeacherInfo TeacherDetails(int? id)
         {
+            Query = "SELECT * FROM Teacher inner join Department on Teacher.teacher_department = Department.department_id WHERE teacher_id = @id";
+            Command = new SqlCommand(Query, Connection);
 
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            _teacher = new TeacherInfo();
+
+            while (Reader.Read())
+            {
+                _teacher.Teacher_Id = (int)Reader["teacher_id"];
+                _teacher.Teacher_Name = Reader["teacher_name"].ToString();
+                _teacher.Teacher_Email = Reader["teacher_email"].ToString();
+                _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
+                _teacher.Teacher_Birth_Date = Convert.ToDateTime(Reader["teacher_date_of_birth"]);
+                _teacher.Teacher_Address = Reader["teacher_address"].ToString();
+                _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
+                _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
+                _teacher.Department_Id = (int)Reader["teacher_department"];
+                _teacher.Department_Name = Reader["department_title"].ToString();
+                _teacher.Department_Code = Reader["department_code"].ToString();
+                _teacher.ImagePath = Reader["teacher_image"].ToString();
+                _teacher.Designation = Reader["teacher_designation"].ToString();
+                _teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
+                _teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return _teacher;
         }
     }
 }

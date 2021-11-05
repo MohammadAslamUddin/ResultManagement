@@ -14,10 +14,10 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/FontAwesome")
 </head>
-<body>
+<body class="bdy">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container container-fluid">
-            <a href="/Admin/ViewAllStudents"><img src="/Image/ustc-0.png" width="100px" /></a>
+            <a href="/Admin/Index"><img src="/Image/ustc-0.png" width="100px" /></a>
             @Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

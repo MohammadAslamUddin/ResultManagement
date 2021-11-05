@@ -273,3 +273,79 @@ input, select, textarea {
 .searchform {
     text-align: right;
 }
+
+/*Design for Admin Panel Details of the different personalities*/
+.designfordetails {
+    background-color: #eeeeee;
+    background-size: 1400px 700px;
+    background-position: 30%;
+    background-attachment: fixed;
+}
+
+.image {
+    text-align: center;
+    width: 200px;
+    /* Container's dimensions */
+    height: 200px;
+    -webkit-border-radius: 75%;
+    -moz-border-radius: 75%;
+    box-shadow: 0 0 0 1px #eee;
+    background-size: cover;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: -30px;
+    align-content: center;
+}
+
+
+
+.trick {
+    display:block;
+    vertical-align: middle;
+    height: 150px;
+}
+
+    .trick img {
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        -webkit-border-radius: 75%;
+        -moz-border-radius: 75%;
+        box-shadow: 0 0 0 1px #eee;
+        background-size:cover;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: -30px;
+        align-content: center;
+    }
+
+.image:hover {
+    box-shadow: 0px 5px 20px .9px #3F3F3F;
+}
+
+.image:hover {
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    -webkit-transition: 1.6s ease-in-out;
+    transition: 1.6s ease-in-out;
+}
+
+
+
+.trick:hover img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+#overlay {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    padding: 0 0 0 0;
+    opacity: 1.0;
+    -webkit-transition: opacity 2.25s ease;
+    -moz-transition: opacity 10.25s ease;
+}
+
+#box:hover #overlay {
+    opacity: 1;
+}

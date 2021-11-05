@@ -5,159 +5,82 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>StudentDetails</h2>
 
-<div>
-    <h4>StudentInfo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Name)
-        </dt>
+@using (Html.BeginForm("StudentDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
-        <dd>
-            @Html.DisplayFor(model => model.Student_Name)
-        </dd>
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="box">
+                    <div id="overlay">
+                        <div class="trick">
+                            <center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Email)
-        </dt>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <table class="table table-bordered table-responsive d-lg-table">
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Reg)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Reg)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Department_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Department_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Email)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Email)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Contact)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Address)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Address)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Birth_Date)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Birth_Date)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Father_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Father_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Father_Contact)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Father_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Mother_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Mother_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Mother_Contact)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Mother_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Student_Semester)</td>
+                                <td>@Html.DisplayFor(model => model.Student_Semester)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Student_Email)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Birth_Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Birth_Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Contact)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Contact)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Father_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Father_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Father_Contact)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Father_Contact)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Mother_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Mother_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Mother_Contact)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Mother_Contact)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Reg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Reg)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department_Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department_Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department_Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Confirm_Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Confirm_Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Semester)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Semester)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Student_Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Student_Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-
-    </dl>
-</div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Student_Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

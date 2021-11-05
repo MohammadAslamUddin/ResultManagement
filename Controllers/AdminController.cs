@@ -25,8 +25,8 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult ViewAllStudents()
         {
-            ViewBag.Students = _adminManager.GetStudentInfoBySearching("");
-            return View();
+            List<StudentInfo> students = _adminManager.GetStudentInfoBySearching("");
+            return View(students);
         }
 
 

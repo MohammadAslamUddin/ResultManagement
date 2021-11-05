@@ -37,7 +37,7 @@ namespace ResultManagement.Controllers
                 var role = _accountManager.Role(logInfo.Email).ToArray();
                 if (role.Any(x => x.Equals("Admin")))
                 {
-                    return RedirectToAction("ViewAllStudents", "Admin");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else if (role.Any(x => x.Equals("Teacher")))
                 {

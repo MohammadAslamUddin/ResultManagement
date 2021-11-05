@@ -9,33 +9,35 @@
 
 @using (Html.BeginForm("ViewAllTeachers", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <table class="table table-bordered table-responsive">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.Teacher_Name)</th>
-                <th>@Html.DisplayNameFor(model => model.Designation)</th>
-                <th>@Html.DisplayNameFor(model => model.Teacher_Email)</th>
-                <th>@Html.DisplayNameFor(model => model.Teacher_Contact)</th>
-                <th>@Html.DisplayNameFor(model => model.Teacher_Address)</th>
-                <th>@Html.DisplayNameFor(model => model.Teacher_RemainingCredit)</th>
-                <th>@Html.DisplayNameFor(model => model.Teacher_TotalCredt)</th>
-                <th>Buttons</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-            @foreach (var item in Model)
-            {
+    <fieldset>
+        <table class="table table-bordered table-responsive">
+            <thead>
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_Name)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Designation)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_Email)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_Contact)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_Address)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_RemainingCredit)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Teacher_TotalCredt)</td>
-                    <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "TeacherDetails", new { id = @item.Teacher_Id })</button></td>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Designation)</th>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_Contact)</th>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_RemainingCredit)</th>
+                    <th>@Html.DisplayNameFor(model => model.Teacher_TotalCredt)</th>
+                    <th>Buttons</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="tbody">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_Contact)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_RemainingCredit)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Teacher_TotalCredt)</td>
+                        <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "TeacherDetails", new { id = @item.Teacher_Id })</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </fieldset>
 }
