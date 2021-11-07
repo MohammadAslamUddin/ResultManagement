@@ -16,10 +16,10 @@
                             <center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>
                         </div>
 
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                         <table class="table table-bordered table-responsive d-lg-table">
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.Teacher_Name)</td>
@@ -58,6 +58,9 @@
                                 <td>@Html.DisplayFor(model => model.Teacher_RemainingCredit)</td>
                             </tr>
                         </table>
+                        <center>
+                            <p class="btn btn-outline-secondary btn_page">@Html.ActionLink("Edit Teacher Details", "EditTeacherDetails", new { id = Model.Teacher_Id })</p>
+                        </center>
                     </div>
                 </div>
             </div>

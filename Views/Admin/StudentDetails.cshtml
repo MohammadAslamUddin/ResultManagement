@@ -72,6 +72,9 @@
                                 <td>@Html.DisplayFor(model => model.Student_Semester)</td>
                             </tr>
                         </table>
+                        <center>
+                            <p class="btn btn-outline-secondary btn_page">@Html.ActionLink("Edit Student Details", "EditStudentDetails", new { id = Model.Student_Id })</p>
+                        </center>
                     </div>
                 </div>
             </div>
@@ -79,8 +82,3 @@
     </fieldset>
 }
 
-
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Student_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@

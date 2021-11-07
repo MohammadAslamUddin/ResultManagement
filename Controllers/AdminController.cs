@@ -55,5 +55,20 @@ namespace ResultManagement.Controllers
             TeacherInfo teacher = _adminManager.TeacherDetails(id);
             return View(teacher);
         }
+
+        [HttpGet]
+        public ActionResult EditStudentDetails(int? id)
+        {
+            StudentInfo student = _adminManager.StudentDetails(id);
+            return View(student);
+        }
+
+
+        [HttpGet]
+        public ActionResult EditTeacherDetails(int? id)
+        {
+            TeacherInfo teacher = _adminManager.TeacherDetails(id);
+            return View(teacher);
+        }
     }
 }

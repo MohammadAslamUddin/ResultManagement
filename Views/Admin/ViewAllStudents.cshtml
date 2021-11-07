@@ -11,34 +11,37 @@
     <fieldset>
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row py-5">
-                <h4 class="text-center">Student's Semester Results</h4>
-                <table class="table table-bordered table-responsive">
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Student_Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.Student_Reg)</th>
-                            <th>@Html.DisplayNameFor(model => model.Student_Email)</th>
-                            <th>@Html.DisplayNameFor(model => model.Student_Contact)</th>
-                            <th>@Html.DisplayNameFor(model => model.Student_Address)</th>
-                            <th>@Html.DisplayNameFor(model => model.Student_Semester)</th>
-                            <th>Buttons</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody" class="py-5">
-                        @foreach (var item in Model)
-                        {
+                <div class="box">
+                    <h2 class="text-center">Teacher's Lists</h2>
+                    <br />
+                    <table class="table table-bordered table-responsive">
+                        <thead>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Reg)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Email)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Contact)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Address)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Student_Semester)</td>
-                                <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new { id = @item.Student_Id })</button></td>
+                                <th>@Html.DisplayNameFor(model => model.Student_Name)</th>
+                                <th>@Html.DisplayNameFor(model => model.Student_Reg)</th>
+                                <th>@Html.DisplayNameFor(model => model.Student_Email)</th>
+                                <th>@Html.DisplayNameFor(model => model.Student_Contact)</th>
+                                <th>@Html.DisplayNameFor(model => model.Student_Address)</th>
+                                <th>@Html.DisplayNameFor(model => model.Student_Semester)</th>
+                                <th>Buttons</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody id="tbody" class="py-5">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Reg)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Contact)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Address)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Student_Semester)</td>
+                                    <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new { id = @item.Student_Id })</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </fieldset>
