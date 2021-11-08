@@ -71,7 +71,7 @@ namespace ResultManagement.Gateway
                 _student.Student_Name = Reader["student_name"].ToString();
                 _student.Student_Email = Reader["student_email"].ToString();
                 _student.Student_Contact = Reader["student_contact"].ToString();
-                _student.Student_Birth_Date = Convert.ToDateTime(Reader["student_date_of_birth"]);
+                _student.Student_Birth_Date = ((DateTime)Reader["student_date_of_birth"]).ToString("MM/dd/yyyy");
                 _student.Student_Address = Reader["student_address"].ToString();
                 _student.Student_Father_Name = Reader["student_fathers_name"].ToString();
                 _student.Student_Father_Contact = Reader["student_fathers_contact"].ToString();
@@ -172,6 +172,36 @@ namespace ResultManagement.Gateway
             Connection.Close();
 
             return _teacher;
+        }
+
+        public int UpdateStudentDetails(StudentInfo student)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Department> GetAllDepartments()
+        {
+            Query = "SELECT * FROM Department;";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            List<Department> departments = new List<Department>();
+
+            while (Reader.Read())
+            {
+                Department department = new Department();
+                department.Department_Id = (int)Reader["department_id"];
+                department.Department_Title = Reader["department_title"].ToString();
+                department.Department_Code = Reader["department_code"].ToString();
+
+                departments.Add(department);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return departments;
         }
     }
 }

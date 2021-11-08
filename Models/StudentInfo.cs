@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
@@ -24,7 +23,7 @@ namespace ResultManagement.Models
 
         [Display(Name = "Date of Birth")]
         [Required(ErrorMessage = "Please select a date")]
-        public DateTime Student_Birth_Date { get; set; }
+        public string Student_Birth_Date { get; set; }
 
 
         [Display(Name = "Contact No")]
@@ -57,6 +56,7 @@ namespace ResultManagement.Models
         public string Student_Mother_Contact { get; set; }
 
 
+        [Display(Name = "Student's Registration No")]
         public string Student_Reg { get; set; }
 
 
@@ -89,6 +89,8 @@ namespace ResultManagement.Models
         public string Student_Confirm_Password { get; set; }
 
 
+        [Display(Name = "Student Semester")]
+        [Required(ErrorMessage = "Student Semester Required")]
         public int Student_Semester { get; set; }
 
 

@@ -308,6 +308,7 @@
     <Compile Include="Manager\StudentManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EntryResult.cs" />
     <Compile Include="Models\ResultViewForTeacherModel.cs" />
     <Compile Include="Models\SemesterResult.cs" />

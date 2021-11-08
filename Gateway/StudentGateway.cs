@@ -35,7 +35,7 @@ namespace ResultManagement.Gateway
                 _student.Student_Name = Reader["student_name"].ToString();
                 _student.Student_Email = Reader["student_email"].ToString();
                 _student.Student_Contact = Reader["student_contact"].ToString();
-                _student.Student_Birth_Date = Convert.ToDateTime(Reader["student_date_of_birth"]);
+                _student.Student_Birth_Date = ((DateTime)Reader["student_date_of_birth"]).ToString("MM/dd/yyyy");
                 _student.Student_Address = Reader["student_address"].ToString();
                 _student.Student_Father_Name = Reader["student_fathers_name"].ToString();
                 _student.Student_Father_Contact = Reader["student_fathers_contact"].ToString();
@@ -73,7 +73,7 @@ namespace ResultManagement.Gateway
                 _student.Student_Name = Reader["student_name"].ToString();
                 _student.Student_Email = Reader["student_email"].ToString();
                 _student.Student_Contact = Reader["student_contact"].ToString();
-                _student.Student_Birth_Date = Convert.ToDateTime(Reader["student_date_of_birth"]);
+                _student.Student_Birth_Date = ((DateTime)Reader["student_date_of_birth"]).ToString("MM/dd/yyyy");
                 _student.Student_Address = Reader["student_address"].ToString();
                 _student.Student_Father_Name = Reader["student_fathers_name"].ToString();
                 _student.Student_Father_Contact = Reader["student_fathers_contact"].ToString();

@@ -59,8 +59,15 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult EditStudentDetails(int? id)
         {
+            ViewBag.Departments = _adminManager.GetAllDepartments();
             StudentInfo student = _adminManager.StudentDetails(id);
             return View(student);
+        }
+        [HttpPost]
+        public ActionResult EditStudentDetails(StudentInfo student)
+        {
+            string message = _adminManager.UpdateStudentDetails(student);
+            return View(message);
         }
 
 

@@ -32,5 +32,23 @@ namespace ResultManagement.Manager
         {
             return _adminGateway.TeacherDetails(id);
         }
+
+        public string UpdateStudentDetails(StudentInfo student)
+        {
+            int rowAffected = _adminGateway.UpdateStudentDetails(student);
+            if (rowAffected > 0)
+            {
+                return "Details Updated!";
+            }
+            else
+            {
+                return "Updating Failed!";
+            }
+        }
+
+        public List<Department> GetAllDepartments()
+        {
+            return _adminGateway.GetAllDepartments();
+        }
     }
 }
