@@ -4,25 +4,26 @@
 @{
     ViewBag.Title = "EditStudentDetails";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    List<Department> departments = ViewBag.Departments;
+    string message = ViewBag.message;
 }
 
 
 @using (Html.BeginForm("EditStudentDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
+    @Html.AntiForgeryToken()
     <fieldset>
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="box">
                     <div id="overlay">
-                        <div class="trick">
-                            <center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>
-                        </div>
-
+                        <!--<div class="trick">
+                        <center>-->@*<img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)">*@<!--</center>
+                        </div>-->
+                        
                         <br />
                         <br />
                         <br />
+                        <h2 class="text-center">Updating Student's Informations</h2>
                         <br />
                         <table class="table table-borderless">
                             <tr>
@@ -44,18 +45,6 @@
                                 <td>@Html.LabelFor(model => model.Student_Contact)</td>
                                 <td>@Html.TextBoxFor(model => model.Student_Contact)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Student_Contact)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.LabelFor(model => model.Department_Name)</td>
-                                <td>
-                                    <select>
-                                        <option>Select a Department</option>
-                                        @foreach (Department department in departments)
-                                        {
-                                            <option id="@department.Department_Id">@department.Department_Title</option>}
-                                    </select>
-                                </td>
-                                <td>@Html.ValidationMessageFor(model => model.Department_Name)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Student_Address)</td>
@@ -88,9 +77,8 @@
                                 <td>@Html.ValidationMessageFor(model => model.Student_Semester)</td>
                             </tr>
                         </table>
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, @message, new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.Student_Id)
-
                         <p class="text-center">
                             <button type="submit" value="Update" class="btn btn-outline-secondary btn_page">Update Details</button>
                         </p>

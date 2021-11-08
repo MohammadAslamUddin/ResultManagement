@@ -41,7 +41,7 @@ namespace ResultManagement.Gateway
                 _teacher.Teacher_Name = Reader["teacher_name"].ToString();
                 _teacher.Teacher_Email = Reader["teacher_email"].ToString();
                 _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
-                _teacher.Teacher_Birth_Date = Convert.ToDateTime(Reader["teacher_date_of_birth"]);
+                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
                 _teacher.Teacher_Address = Reader["teacher_address"].ToString();
                 _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
                 _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();

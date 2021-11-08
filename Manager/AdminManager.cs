@@ -38,7 +38,7 @@ namespace ResultManagement.Manager
             int rowAffected = _adminGateway.UpdateStudentDetails(student);
             if (rowAffected > 0)
             {
-                return "Details Updated!";
+                return "Student's Information Updated!";
             }
             else
             {
@@ -49,6 +49,19 @@ namespace ResultManagement.Manager
         public List<Department> GetAllDepartments()
         {
             return _adminGateway.GetAllDepartments();
+        }
+
+        public string UpdateTeacherDetails(TeacherInfo teacher)
+        {
+            int rowAffected = _adminGateway.UpdateTeacherDetails(teacher);
+            if (rowAffected > 0)
+            {
+                return "Teacher's Information Updated!";
+            }
+            else
+            {
+                return "Information updating Failed!";
+            }
         }
     }
 }

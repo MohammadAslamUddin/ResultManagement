@@ -124,7 +124,7 @@ namespace ResultManagement.Gateway
                 _teacher.Designation = Reader["teacher_designation"].ToString();
                 _teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
                 _teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
-                _teacher.Teacher_Birth_Date = Convert.ToDateTime(Reader["teacher_date_of_birth"].ToString());
+                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
                 _teacher.ImagePath = Reader["teacher_image"].ToString();
 
                 teachers.Add(_teacher);
@@ -156,7 +156,7 @@ namespace ResultManagement.Gateway
                 _teacher.Teacher_Name = Reader["teacher_name"].ToString();
                 _teacher.Teacher_Email = Reader["teacher_email"].ToString();
                 _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
-                _teacher.Teacher_Birth_Date = Convert.ToDateTime(Reader["teacher_date_of_birth"]);
+                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
                 _teacher.Teacher_Address = Reader["teacher_address"].ToString();
                 _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
                 _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
@@ -176,7 +176,52 @@ namespace ResultManagement.Gateway
 
         public int UpdateStudentDetails(StudentInfo student)
         {
-            throw new NotImplementedException();
+            Query = "UPDATE Student SET student_name = @sname, student_email=@semail, student_date_of_birth=@sdob, student_contact=@scontact, student_address=@sadd, student_fathers_name=@sfname, student_fathers_contact=@sfcontact, " +
+                    "student_mothers_name=@smname, student_mothers_contact=@smcontact, student_semester=@semes " +
+                    "WHERE student_id=@id; ";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("sname", SqlDbType.VarChar);
+            Command.Parameters["sname"].Value = student.Student_Name;
+
+            Command.Parameters.Add("semail", SqlDbType.VarChar);
+            Command.Parameters["semail"].Value = student.Student_Email;
+
+            Command.Parameters.Add("sdob", SqlDbType.Date);
+            Command.Parameters["sdob"].Value = student.Student_Birth_Date;
+
+            Command.Parameters.Add("scontact", SqlDbType.VarChar);
+            Command.Parameters["scontact"].Value = student.Student_Contact;
+
+            Command.Parameters.Add("sadd", SqlDbType.VarChar);
+            Command.Parameters["sadd"].Value = student.Student_Address;
+
+            Command.Parameters.Add("sfname", SqlDbType.VarChar);
+            Command.Parameters["sfname"].Value = student.Student_Father_Name;
+
+            Command.Parameters.Add("sfcontact", SqlDbType.VarChar);
+            Command.Parameters["sfcontact"].Value = student.Student_Father_Contact;
+
+            Command.Parameters.Add("smname", SqlDbType.VarChar);
+            Command.Parameters["smname"].Value = student.Student_Mother_Name;
+
+            Command.Parameters.Add("smcontact", SqlDbType.VarChar);
+            Command.Parameters["smcontact"].Value = student.Student_Mother_Contact;
+
+            Command.Parameters.Add("semes", SqlDbType.Int);
+            Command.Parameters["semes"].Value = student.Student_Semester;
+
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = student.Student_Id;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
         }
 
         public List<Department> GetAllDepartments()
@@ -202,6 +247,49 @@ namespace ResultManagement.Gateway
             Connection.Close();
 
             return departments;
+        }
+
+        public int UpdateTeacherDetails(TeacherInfo teacher)
+        {
+            Query = "UPDATE Teacher SET teacher_name=@tname, teacher_email=@temail, teacher_date_of_birth=@tdob, teacher_contact=@tcontact, teacher_address=@tadd, teacher_fathers_name=@tfname, teacher_mothers_name=@tmname, teacher_designation=@tdes " +
+                    "WHERE teacher_id = @id;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("tname", SqlDbType.VarChar);
+            Command.Parameters["tname"].Value = teacher.Teacher_Name;
+
+            Command.Parameters.Add("temail", SqlDbType.VarChar);
+            Command.Parameters["temail"].Value = teacher.Teacher_Email;
+
+            Command.Parameters.Add("tdob", SqlDbType.Date);
+            Command.Parameters["tdob"].Value = teacher.Teacher_Birth_Date;
+
+            Command.Parameters.Add("tcontact", SqlDbType.VarChar);
+            Command.Parameters["tcontact"].Value = teacher.Teacher_Contact;
+
+            Command.Parameters.Add("tadd", SqlDbType.VarChar);
+            Command.Parameters["tadd"].Value = teacher.Teacher_Address;
+
+            Command.Parameters.Add("tfname", SqlDbType.VarChar);
+            Command.Parameters["tfname"].Value = teacher.Teacher_Father_Name;
+
+            Command.Parameters.Add("tmname", SqlDbType.VarChar);
+            Command.Parameters["tmname"].Value = teacher.Teacher_Mother_Name;
+
+            Command.Parameters.Add("tdes", SqlDbType.VarChar);
+            Command.Parameters["tdes"].Value = teacher.Designation;
+
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = teacher.Teacher_Id;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
         }
     }
 }
