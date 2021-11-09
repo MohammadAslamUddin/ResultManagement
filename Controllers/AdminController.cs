@@ -88,5 +88,36 @@ namespace ResultManagement.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public ActionResult AddingNewStudent()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddingNewStudent(StudentInfo student)
+        {
+            //ViewBag.Message = _adminManager.Save(student);
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult AddingNewTeacher()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddingNewTeacher(TeacherInfo teacher)
+        {
+            //ViewBag.Message = _adminManager.Save(teacher);
+            return View();
+        }
     }
 }

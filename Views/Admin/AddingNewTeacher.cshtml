@@ -1,0 +1,84 @@
+﻿@model ResultManagement.Models.TeacherInfo
+
+@{
+    ViewBag.Title = "AddingNewTeacher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string message = ViewBag.message;
+}
+
+
+@using (Html.BeginForm("AddingNewTeacher", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+            <div class="box">
+                <div id="overlay">
+                <br/>
+                <br/>
+                <h3 class="text-center">Fill Up Teacher's Information</h3>
+                <br/>
+                <table class="table table-borderless">
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Name)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Name)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Name)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Email)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Email)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Email)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Birth_Date)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Birth_Date)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Birth_Date)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Contact)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Contact)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Contact)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Address)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Address)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Address)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Father_Name)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Father_Name)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Father_Name)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teacher_Mother_Name)</td>
+                        <td>@Html.TextBoxFor(model => model.Teacher_Mother_Name)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teacher_Mother_Name)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Designation)</td>
+                        <td>@Html.TextBoxFor(model => model.Designation)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Designation)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teachers_Password)</td>
+                        <td>@Html.TextBoxFor(model => model.Teachers_Password)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teachers_Password)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Teachers_Confirm_Password)</td>
+                        <td>@Html.TextBoxFor(model => model.Teachers_Confirm_Password)</td>
+                        <td>@Html.ValidationMessageFor(model => model.Teachers_Confirm_Password)</td>
+                    </tr>
+                </table>
+                @Html.ValidationSummary(true, @message, new {@class = "text-danger"})
+                <p class="text-center">
+                    <button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Teacher</button>
+                </p>
+            </div>
+            </div>
+            </div>
+        </div>
+    </fieldset>
+}
+

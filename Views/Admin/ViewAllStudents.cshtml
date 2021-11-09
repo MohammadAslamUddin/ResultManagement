@@ -16,31 +16,34 @@
                     <br />
                     <table class="table table-bordered table-responsive">
                         <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(model => model.Student_Name)</th>
-                                <th>@Html.DisplayNameFor(model => model.Student_Reg)</th>
-                                <th>@Html.DisplayNameFor(model => model.Student_Email)</th>
-                                <th>@Html.DisplayNameFor(model => model.Student_Contact)</th>
-                                <th>@Html.DisplayNameFor(model => model.Student_Address)</th>
-                                <th>@Html.DisplayNameFor(model => model.Student_Semester)</th>
-                                <th>Buttons</th>
-                            </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Student_Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Student_Reg)</th>
+                            <th>@Html.DisplayNameFor(model => model.Student_Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.Student_Contact)</th>
+                            <th>@Html.DisplayNameFor(model => model.Student_Address)</th>
+                            <th>@Html.DisplayNameFor(model => model.Student_Semester)</th>
+                            <th>Buttons</th>
+                        </tr>
                         </thead>
                         <tbody id="tbody" class="py-5">
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Name)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Reg)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Email)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Contact)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Address)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Student_Semester)</td>
-                                    <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new { id = @item.Student_Id })</button></td>
-                                </tr>
-                            }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Reg)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Contact)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Address)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Student_Semester)</td>
+                                <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "StudentDetails", new { id = @item.Student_Id })</button></td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
+                    <div class="text-center">
+                    <button type="button" class="btn btn-outline-secondary btn_page text-center"><a href="/Admin/AddingNewStudent">Add New Student</a></button>
+                </div>
                 </div>
             </div>
         </div>

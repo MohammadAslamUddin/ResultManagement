@@ -348,6 +348,8 @@
     <Content Include="Views\Admin\TeacherDetails.cshtml" />
     <Content Include="Views\Admin\EditStudentDetails.cshtml" />
     <Content Include="Views\Admin\EditTeacherDetails.cshtml" />
+    <Content Include="Views\Admin\AddingNewStudent.cshtml" />
+    <Content Include="Views\Admin\AddingNewTeacher.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
