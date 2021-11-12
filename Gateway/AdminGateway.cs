@@ -409,7 +409,7 @@ namespace ResultManagement.Gateway
             {
                 userRole = (int)Reader["id"];
             }
-
+            Connection.Close();
             return userRole;
         }
 
