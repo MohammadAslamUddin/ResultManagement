@@ -1,9 +1,11 @@
-﻿@model ResultManagement.Models.StudentInfo
+﻿@using ResultManagement.Models
+@model ResultManagement.Models.StudentInfo
 
 @{
     ViewBag.Title = "AddingNewStudent";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     string message = ViewBag.message;
+    List<Department> departments = ViewBag.Departments;
 }
 
 
@@ -39,6 +41,19 @@
                             <td>@Html.LabelFor(model => model.Student_Contact)</td>
                             <td>@Html.EditorFor(model => model.Student_Contact)</td>
                             <td>@Html.ValidationMessageFor(model => model.Student_Contact)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(model => model.Department_Id)</td>
+                            <td>
+                                <select name="Department_Id" id="Department_Id">
+                                    <option>Select A Department</option>
+                                    @foreach (var dep in departments)
+                                    {
+                                        <option value="@dep.Department_Id">@dep.Department_Title</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>@Html.ValidationMessageFor(model => model.Department_Id)</td>
                         </tr>
                         <tr>
                             <td>@Html.LabelFor(model => model.Student_Address)</td>

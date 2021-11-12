@@ -92,6 +92,7 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult AddingNewStudent()
         {
+            ViewBag.Departments = _adminManager.GetAllDepartments();
             return View();
         }
 
@@ -100,7 +101,8 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddingNewStudent(StudentInfo student)
         {
-            //ViewBag.Message = _adminManager.Save(student);
+            ViewBag.Departments = _adminManager.GetAllDepartments();
+            ViewBag.Message = _adminManager.SaveStudent(student);
             return View();
         }
 

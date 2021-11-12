@@ -63,5 +63,19 @@ namespace ResultManagement.Manager
                 return "Information updating Failed!";
             }
         }
+
+        
+        public string SaveStudent(StudentInfo student)
+        {
+            int rowAffected = _adminGateway.SaveStudent(student);
+            if (rowAffected > 0)
+            {
+                return "New Student Information Saved!";
+            }
+            else
+            {
+                return "Saving failed!";
+            }
+        }
     }
 }
