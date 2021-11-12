@@ -1,6 +1,8 @@
 ﻿using ResultManagement.Manager;
 using ResultManagement.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 
 namespace ResultManagement.Controllers
@@ -102,8 +104,19 @@ namespace ResultManagement.Controllers
         public ActionResult AddingNewStudent(StudentInfo student)
         {
             ViewBag.Departments = _adminManager.GetAllDepartments();
+
+
+            string fileName = Path.GetFileNameWithoutExtension(student.ImageFile.FileName);
+            string extension = Path.GetExtension(student.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
+            student.ImagePath = "~/Image/Student/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/Student/"), fileName);
+            student.ImageFile.SaveAs(fileName);
+
+
             ViewBag.Message = _adminManager.SaveStudent(student);
             return View();
+
         }
 
 

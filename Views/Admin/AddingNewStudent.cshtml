@@ -43,6 +43,11 @@
                             <td>@Html.ValidationMessageFor(model => model.Student_Contact)</td>
                         </tr>
                         <tr>
+                            <td>@Html.LabelFor(model => model.ImageFile)</td>
+                            <td><input type="file" name="ImageFile" id="ImageFile" required /></td>
+                            <td>@Html.ValidationMessageFor(model => model.ImageFile)</td>
+                        </tr>
+                        <tr>
                             <td>@Html.LabelFor(model => model.Department_Id)</td>
                             <td>
                                 <select name="Department_Id" id="Department_Id">

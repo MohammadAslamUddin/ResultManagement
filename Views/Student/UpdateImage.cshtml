@@ -29,7 +29,7 @@
                         </div>
                         @Html.HiddenFor(model => model.Id)
                         <table class="table table-borderless table-responsive d-grid">
-                            <tr class="form-group">
+                            <tr class="">
                                 <td>@Html.LabelFor(model => model.ImageFile)</td>
                                 <td><input type="file" name="ImageFile" id="ImageFile" required /></td>
                                 <td>@Html.ValidationMessageFor(model => model.ImageFile)</td>

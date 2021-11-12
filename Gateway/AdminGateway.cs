@@ -296,54 +296,134 @@ namespace ResultManagement.Gateway
 
         public int SaveStudent(StudentInfo student)
         {
-            student.Student_Reg = GetRegistrationNumber(student);
-            student.Student_Semester = 1;
+            int rowAffect = InsertDataIntoRoleAndLoginPage(student);
 
-            Query = "INSERT INTO Student(@sname,@semail,@scont,@sdob,@sadd, @sfname,@sfcont,@smname,@smcont,@sreg,@sdep,@spass,@simg,@semes);";
+            if (rowAffect > 0)
+            {
+                student.Student_Reg = GetRegistrationNumber(student);
+                student.Student_Semester = 1;
+
+                Query = "INSERT INTO Student(@sname,@semail,@scont,@sdob,@sadd, @sfname,@sfcont,@smname,@smcont,@sreg,@sdep,@spass,@simg,@semes);";
+
+                Command = new SqlCommand(Query, Connection);
+
+                Command.Parameters.Clear();
+                Command.Parameters.Add("sname", SqlDbType.VarChar);
+                Command.Parameters["sname"].Value = student.Student_Name;
+
+                Command.Parameters.Add("semail", SqlDbType.VarChar);
+                Command.Parameters["semail"].Value = student.Student_Email;
+
+                Command.Parameters.Add("scont", SqlDbType.VarChar);
+                Command.Parameters["scont"].Value = student.Student_Contact;
+
+                Command.Parameters.Add("sdob", SqlDbType.Date);
+                Command.Parameters["sdob"].Value = student.Student_Birth_Date;
+
+                Command.Parameters.Add("sadd", SqlDbType.VarChar);
+                Command.Parameters["sadd"].Value = student.Student_Address;
+
+                Command.Parameters.Add("sfname", SqlDbType.VarChar);
+                Command.Parameters["sfname"].Value = student.Student_Father_Name;
+
+                Command.Parameters.Add("sfcont", SqlDbType.VarChar);
+                Command.Parameters["sfcont"].Value = student.Student_Father_Contact;
+
+                Command.Parameters.Add("smname", SqlDbType.VarChar);
+                Command.Parameters["smname"].Value = student.Student_Mother_Name;
+
+                Command.Parameters.Add("smcont", SqlDbType.VarChar);
+                Command.Parameters["smcont"].Value = student.Student_Mother_Contact;
+
+                Command.Parameters.Add("sreg", SqlDbType.VarChar);
+                Command.Parameters["sreg"].Value = student.Student_Reg;
+
+                Command.Parameters.Add("sdep", SqlDbType.Int);
+                Command.Parameters["sdep"].Value = student.Department_Id;
+
+                Command.Parameters.Add("semes", SqlDbType.Int);
+                Command.Parameters["semes"].Value = student.Student_Semester;
+
+                Command.Parameters.Add("spass", SqlDbType.NVarChar);
+                Command.Parameters["spass"].Value = student.Student_Password;
+
+                Command.Parameters.Add("simg", SqlDbType.NVarChar);
+                Command.Parameters["simg"].Value = student.ImagePath;
+
+                Connection.Open();
+
+                RowAffected = Command.ExecuteNonQuery();
+
+                Connection.Close();
+
+                return RowAffected;
+            }
+            else
+            {
+                return rowAffect;
+            }
+        }
+
+        private int InsertDataIntoRoleAndLoginPage(StudentInfo student)
+        {
+            int rowAffected = InsertLoginPageData(student);
+            if (rowAffected > 0)
+            {
+                int userRole = GetUserRole(student);
+                Query = "INSERT INTO Role VALUES(@role, 'Student')";
+                Command = new SqlCommand(Query, Connection);
+
+                Command.Parameters.Clear();
+                Command.Parameters.Add("role", SqlDbType.Int);
+                Command.Parameters["role"].Value = userRole;
+
+                Connection.Open();
+
+                RowAffected = Command.ExecuteNonQuery();
+
+                Connection.Close();
+                return RowAffected;
+            }
+            else
+            {
+                return rowAffected;
+            }
+
+        }
+
+        private int GetUserRole(StudentInfo student)
+        {
+            Query = "SELECT * FROM LOGIN WHERE email = @email";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
-            Command.Parameters.Add("sname", SqlDbType.VarChar);
-            Command.Parameters["sname"].Value = student.Student_Name;
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = student.Student_Email;
 
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            int userRole = 0;
+            if (Reader.Read())
+            {
+                userRole = (int)Reader["id"];
+            }
+
+            return userRole;
+        }
+
+        private int InsertLoginPageData(StudentInfo student)
+        {
+            Query = "INSERT INTO LOGIN VALUES(@semail, @spass)";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
             Command.Parameters.Add("semail", SqlDbType.VarChar);
             Command.Parameters["semail"].Value = student.Student_Email;
 
-            Command.Parameters.Add("scont", SqlDbType.VarChar);
-            Command.Parameters["scont"].Value = student.Student_Contact;
-
-            Command.Parameters.Add("sdob", SqlDbType.Date);
-            Command.Parameters["sdob"].Value = student.Student_Birth_Date;
-
-            Command.Parameters.Add("sadd", SqlDbType.VarChar);
-            Command.Parameters["sadd"].Value = student.Student_Address;
-
-            Command.Parameters.Add("sfname", SqlDbType.VarChar);
-            Command.Parameters["sfname"].Value = student.Student_Father_Name;
-
-            Command.Parameters.Add("sfcont", SqlDbType.VarChar);
-            Command.Parameters["sfcont"].Value = student.Student_Father_Contact;
-
-            Command.Parameters.Add("smname", SqlDbType.VarChar);
-            Command.Parameters["smname"].Value = student.Student_Mother_Name;
-
-            Command.Parameters.Add("smcont", SqlDbType.VarChar);
-            Command.Parameters["smcont"].Value = student.Student_Mother_Contact;
-
-            Command.Parameters.Add("sreg", SqlDbType.VarChar);
-            Command.Parameters["sreg"].Value = student.Student_Reg;
-
-            Command.Parameters.Add("sdep", SqlDbType.Int);
-            Command.Parameters["sdep"].Value = student.Department_Id;
-
-            Command.Parameters.Add("semes", SqlDbType.Int);
-            Command.Parameters["semes"].Value = student.Student_Semester;
-
             Command.Parameters.Add("spass", SqlDbType.NVarChar);
             Command.Parameters["spass"].Value = student.Student_Password;
-
-            Command.Parameters.Add("simg", SqlDbType.NVarChar);
-            Command.Parameters["simg"].Value = student.ImagePath;
 
             Connection.Open();
 
@@ -352,6 +432,7 @@ namespace ResultManagement.Gateway
             Connection.Close();
 
             return RowAffected;
+
         }
 
         private string GetRegistrationNumber(StudentInfo student)
