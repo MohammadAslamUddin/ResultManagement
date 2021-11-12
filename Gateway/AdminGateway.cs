@@ -357,15 +357,15 @@ namespace ResultManagement.Gateway
         private string GetRegistrationNumber(StudentInfo student)
         {
             string short_form_of_Department = ShortFormOfDepartment(student.Department_Id);
-            string date = GetMonthNumber();
+            string month = GetMonthNumber();
             int year = GetYear();
-            int serialNo = GetSerialNo(short_form_of_Department + "-" + date + "-" + year);
+            string serialNo = GetSerialNo(short_form_of_Department + "-" + month + "-" + year);
 
-            string registrationNo = short_form_of_Department + "-" + date + "-" + year + "-" + serialNo;
+            string registrationNo = short_form_of_Department + "-" + month + "-" + year + "-" + serialNo;
             return registrationNo;
         }
 
-        private int GetSerialNo(string regNo)
+        private string GetSerialNo(string regNo)
         {
             Query = "SELECT TOP 1 * FROM Student WHERE student_reg_no LIKE @regNo ORDER BY student_id DESC";
             Command = new SqlCommand(Query, Connection);
@@ -378,7 +378,7 @@ namespace ResultManagement.Gateway
 
             Reader = Command.ExecuteReader();
 
-            int num;
+            string num = "";
             if (Reader.HasRows)
             {
                 string reg = "";
@@ -386,11 +386,19 @@ namespace ResultManagement.Gateway
                 {
                     reg = Reader["student_reg_no"].ToString();
                 }
-                num = Convert.ToInt32(reg.Substring(reg.Length - 2));
+                string regis = Convert.ToString(Convert.ToInt32(reg.Substring(reg.Length - 2)) + 1);
+                if (regis.Length == 1)
+                {
+                    num = "0" + regis;
+                }
+                else
+                {
+                    num = regis;
+                }
             }
             else
             {
-                num = 01;
+                num = "01";
             }
 
             return num;
@@ -398,13 +406,29 @@ namespace ResultManagement.Gateway
 
         private int GetYear()
         {
-            int fYear = Convert.ToInt32(DateTime.Today.Year.ToString().Substring(2, 2));
+            int fYear;
+            if (DateTime.Today.Month < 9)
+            {
+                fYear = Convert.ToInt32(DateTime.Today.Year.ToString().Substring(2, 2));
+            }
+            else
+            {
+                fYear = Convert.ToInt32(DateTime.Today.Year.ToString().Substring(2, 2)) + 1;
+            }
             return fYear;
         }
 
         private string GetMonthNumber()
         {
             string sMonth = DateTime.Now.ToString("MM");
+            if (sMonth == "1" || sMonth == "2" || sMonth == "9" || sMonth == "10" || sMonth == "11" || sMonth == "12")
+            {
+                sMonth = "01";
+            }
+            else
+            {
+                sMonth = "06";
+            }
             return sMonth;
         }
 
