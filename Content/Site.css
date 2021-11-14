@@ -349,3 +349,14 @@ input, select, textarea {
 #box:hover #overlay {
     opacity: 1;
 }
+
+.table {
+    margin: auto;
+    width: 50% !important;
+}
+
+.table td {
+    margin: auto;
+    width: 380px !important;
+    
+}

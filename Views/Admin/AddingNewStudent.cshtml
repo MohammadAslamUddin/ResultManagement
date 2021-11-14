@@ -7,102 +7,114 @@
     string message = ViewBag.message;
     List<Department> departments = ViewBag.Departments;
 }
-
+<style>
+    
+    
+     
+</style>
 
 @using (Html.BeginForm("AddingNewStudent", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <fieldset>
-        <div class="container rounded bg-white mt-5 mb-5">
+        <div class="container bg-white mt-5 mb-5 justify-content-center">
             <div class="row">
-            <div class="box">
-                <div id="overlay">
-                    <br/>
-                    <br/>
-                    <h3 class="text-center">Fill Up S's Information</h3>
-                    <br/>
-                    <table class="table table-borderless">
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Name)</td>
-                            <td>@Html.EditorFor(model => model.Student_Name)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Name)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Email)</td>
-                            <td>@Html.EditorFor(model => model.Student_Email)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Email)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Birth_Date)</td>
-                            <td>@Html.EditorFor(model => model.Student_Birth_Date)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Birth_Date)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Contact)</td>
-                            <td>@Html.EditorFor(model => model.Student_Contact)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Contact)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.ImageFile)</td>
-                            <td><input type="file" name="ImageFile" id="ImageFile" required /></td>
-                            <td>@Html.ValidationMessageFor(model => model.ImageFile)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Department_Id)</td>
-                            <td>
-                                <select name="Department_Id" id="Department_Id">
-                                    <option>Select A Department</option>
-                                    @foreach (var dep in departments)
-                                    {
-                                        <option value="@dep.Department_Id">@dep.Department_Title</option>
-                                    }
-                                </select>
-                            </td>
-                            <td>@Html.ValidationMessageFor(model => model.Department_Id)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Address)</td>
-                            <td>@Html.EditorFor(model => model.Student_Address)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Address)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Father_Name)</td>
-                            <td>@Html.EditorFor(model => model.Student_Father_Name)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Father_Name)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Father_Contact)</td>
-                            <td>@Html.EditorFor(model => model.Student_Father_Contact)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Father_Contact)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Mother_Name)</td>
-                            <td>@Html.EditorFor(model => model.Student_Mother_Name)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Mother_Name)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Mother_Contact)</td>
-                            <td>@Html.EditorFor(model => model.Student_Mother_Contact)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Mother_Contact)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Password)</td>
-                            <td>@Html.EditorFor(model => model.Student_Password)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Password)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(model => model.Student_Confirm_Password)</td>
-                            <td>@Html.EditorFor(model => model.Student_Confirm_Password)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Student_Confirm_Password)</td>
-                        </tr>
-                    </table>
-                    @Html.ValidationSummary(true, @message, new {@class = "text-danger"})
-                    <p class="text-center">
-                        <button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button>
-                    </p>
+                <div class="box">
+                        <br />
+                        <br />
+                        <h3 class="text-center">Fill Up Student's Information</h3>
+                        <br />
+                        <table class="table table-borderless d-block table-responsive" >
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Name)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Email)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Email)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Email)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Birth_Date)</td>
+                                <td>@Html.EditorFor(model => model.Student_Birth_Date, new { htmlAttributes = new { @class = "datepicker" } })</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Birth_Date)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Contact)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Contact)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ImageFile)</td>
+                                <td><input type="file" name="ImageFile" id="ImageFile" required /></td>
+                                <td>@Html.ValidationMessageFor(model => model.ImageFile)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Department_Id)</td>
+                                <td>
+                                    <select name="Department_Id" id="Department_Id">
+                                        <option>Select A Department</option>
+                                        @foreach (var dep in departments)
+                                        {
+                                            <option value="@dep.Department_Id">@dep.Department_Title</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>@Html.ValidationMessageFor(model => model.Department_Id)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Address)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Address)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Address)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Father_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Father_Name)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Father_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Father_Contact)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Father_Contact)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Father_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Mother_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Mother_Name)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Mother_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Mother_Contact)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Mother_Contact)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Mother_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Password)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Password)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Password)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student_Confirm_Password)</td>
+                                <td>@Html.TextBoxFor(model => model.Student_Confirm_Password)</td>
+                                <td>@Html.ValidationMessageFor(model => model.Student_Confirm_Password)</td>
+                            </tr>
+                        </table>
+                        @Html.ValidationSummary(true, @message, new { @class = "text-danger" })
+                        <p class="text-center">
+                            <button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button>
+                        </p>
+                    </div>
                 </div>
         </div>
-        </div>
-        </div>
     </fieldset>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy/mm/dd"
+            });
+        });
+    </script>
 }

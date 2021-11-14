@@ -8,7 +8,8 @@ namespace ResultManagement
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.validate*"));
@@ -20,11 +21,13 @@ namespace ResultManagement
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
+                "~/Scripts/jquery.timepicker.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/mdb.min.css",
+                "~/Content/bootstrap-datetimepicker.min.css",
                 "~/Content/site.css"));
 
             bundles.Add(new Bundle("~/scripts/core").Include(
@@ -33,6 +36,8 @@ namespace ResultManagement
                 "~/Scripts/popper.min.js",
                 "~/Scripts/modules/wow.js",
                 "~/Scripts/mdb.min.js",
+                "~/Content/jquery.timepicker.min.css",
+                "~/Scripts/bootstrap-datetimepicker.min.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/FontAwesome").Include(

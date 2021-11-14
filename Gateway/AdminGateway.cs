@@ -303,7 +303,7 @@ namespace ResultManagement.Gateway
                 student.Student_Reg = GetRegistrationNumber(student);
                 student.Student_Semester = 1;
 
-                Query = "INSERT INTO Student(@sname,@semail,@scont,@sdob,@sadd, @sfname,@sfcont,@smname,@smcont,@sreg,@sdep,@spass,@simg,@semes);";
+                Query = "INSERT INTO Student VALUES(@sname,@semail,@scont,@sdob,@sadd, @sfname,@sfcont,@smname,@smcont,@sreg,@sdep,@spass,@simg,@semes);";
 
                 Command = new SqlCommand(Query, Connection);
 
@@ -481,6 +481,8 @@ namespace ResultManagement.Gateway
             {
                 num = "01";
             }
+            Reader.Close();
+            Connection.Close();
 
             return num;
         }
