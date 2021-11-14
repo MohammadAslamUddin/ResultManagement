@@ -140,6 +140,9 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\jquery.timepicker.min.css" />
+    <Content Include="Content\jquery.ui.layout.css" />
+    <Content Include="Content\jquery.ui.message.css" />
+    <Content Include="Content\jquery.ui.message.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -235,8 +238,12 @@
     <Content Include="Scripts\jquery-ui-1.8.13.js" />
     <Content Include="Scripts\jquery-ui-1.8.13.min.js" />
     <Content Include="Scripts\jquery-ui.unobtrusive.js" />
+    <Content Include="Scripts\jquery.layout.js" />
+    <Content Include="Scripts\jquery.layout.min.js" />
     <Content Include="Scripts\jquery.timepicker.js" />
     <Content Include="Scripts\jquery.timepicker.min.js" />
+    <Content Include="Scripts\jquery.ui.message.js" />
+    <Content Include="Scripts\jquery.ui.message.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

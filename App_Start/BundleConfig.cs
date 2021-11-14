@@ -28,6 +28,9 @@ namespace ResultManagement
                 "~/Content/bootstrap.css",
                 "~/Content/mdb.min.css",
                 "~/Content/bootstrap-datetimepicker.min.css",
+                "~/Content/jquery.timepicker.min.css",
+                "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
+                "~/Content/jquery.ui.layout.css",
                 "~/Content/site.css"));
 
             bundles.Add(new Bundle("~/scripts/core").Include(
@@ -36,8 +39,9 @@ namespace ResultManagement
                 "~/Scripts/popper.min.js",
                 "~/Scripts/modules/wow.js",
                 "~/Scripts/mdb.min.js",
-                "~/Content/jquery.timepicker.min.css",
                 "~/Scripts/bootstrap-datetimepicker.min.js",
+                "~/Scripts/jquery-ui.unobtrusive.js",
+                "~/Scripts/jquery.timepicker.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/FontAwesome").Include(
