@@ -64,7 +64,7 @@ namespace ResultManagement.Manager
             }
         }
 
-        
+
         public string SaveStudent(StudentInfo student)
         {
             int rowAffected = _adminGateway.SaveStudent(student);
@@ -74,6 +74,7 @@ namespace ResultManagement.Manager
             }
             else
             {
+                int affected = _adminGateway.DeleteFromRoleAndLogInSystem(student);
                 return "Saving failed!";
             }
         }

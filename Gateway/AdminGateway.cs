@@ -538,5 +538,77 @@ namespace ResultManagement.Gateway
 
             return sdep;
         }
+
+        public int DeleteFromRoleAndLogInSystem(StudentInfo student)
+        {
+            int deleteRole = DeleteFromRole(student);
+            int deleteLogin = 0;
+            if (deleteRole != 0)
+            {
+                deleteLogin = DeleteFromLogIn(student);
+            }
+
+            return deleteLogin;
+        }
+
+        private int DeleteFromLogIn(StudentInfo student)
+        {
+            Query = "DELETE FROM logIn WHERE email = @email;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = student.Student_Email;
+
+            Connection.Open();
+            RowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+            return RowAffected;
+        }
+
+        private int DeleteFromRole(StudentInfo student)
+        {
+            Query = "SELECT * FROM Login WHERE email = @email;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = student.Student_Email;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            int userRole = 0;
+            if (Reader.Read())
+            {
+                userRole = (int)Reader["id"];
+                if (userRole != 0)
+                {
+                    int role = DeleteRole(userRole);
+                }
+            }
+            Reader.Close();
+            Connection.Close();
+            return userRole;
+        }
+
+        private int DeleteRole(int role)
+        {
+            Query = "DELETE FROM Role WHERE userRole = @val;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("val", SqlDbType.Int);
+            Command.Parameters["val"].Value = role;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Reader.Close();
+            Connection.Close();
+            return RowAffected;
+        }
     }
 }
