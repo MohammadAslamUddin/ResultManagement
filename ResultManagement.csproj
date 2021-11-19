@@ -356,6 +356,7 @@
     <Compile Include="Manager\AdminManager.cs" />
     <Compile Include="Manager\StudentManager.cs" />
     <Compile Include="Manager\TeacherManager.cs" />
+    <Compile Include="Models\AssignCourseToTeacher.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EntryResult.cs" />
@@ -401,6 +402,7 @@
     <Content Include="Views\Admin\AddingNewTeacher.cshtml" />
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
+    <Content Include="Views\Admin\AssignCourseToTeacher.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

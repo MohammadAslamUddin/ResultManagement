@@ -105,5 +105,15 @@ namespace ResultManagement.Manager
                 return "Teacher's Information Already Exist";
             }
         }
+
+        public List<TeacherInfo> GetAllTeachers()
+        {
+            return _adminGateway.GetAllTeachers();
+        }
+
+        public List<Course> GetAllCourses()
+        {
+            return _adminGateway.GetAllCourses();
+        }
     }
 }

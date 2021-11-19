@@ -793,5 +793,69 @@ namespace ResultManagement.Gateway
 
             return hasRows;
         }
+
+        public List<TeacherInfo> GetAllTeachers()
+        {
+            Query = "SELECT * FROM Teacher inner join Department on Teacher.teacher_department = Department.department_id";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            List<TeacherInfo> teachers = new List<TeacherInfo>();
+
+            while (Reader.Read())
+            {
+                _teacher = new TeacherInfo();
+                _teacher.Teacher_Id = (int)Reader["teacher_id"];
+                _teacher.Teacher_Name = Reader["teacher_name"].ToString();
+                _teacher.Teacher_Email = Reader["teacher_email"].ToString();
+                _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
+                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
+                _teacher.Teacher_Address = Reader["teacher_address"].ToString();
+                _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
+                _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
+                _teacher.Department_Id = (int)Reader["teacher_department"];
+                _teacher.Department_Name = Reader["department_title"].ToString();
+                _teacher.Department_Code = Reader["department_code"].ToString();
+                _teacher.ImagePath = Reader["teacher_image"].ToString();
+                _teacher.Designation = Reader["teacher_designation"].ToString();
+                _teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
+                _teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
+
+                teachers.Add(_teacher);
+            }
+            Reader.Close();
+            Connection.Close();
+            return teachers;
+        }
+
+        public List<Course> GetAllCourses()
+        {
+            Query = "SELECT * FROM Course";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            List<Course> courses = new List<Course>();
+            while (Reader.Read())
+            {
+                Course course = new Course();
+
+                course.CourseId = (int)Reader["course_id"];
+                course.CourseCode = Reader["course_code"].ToString();
+                course.CourseTitle = Reader["course_title"].ToString();
+                course.CoursePoint = Convert.ToDouble(Reader["course_credit"]);
+
+                courses.Add(course);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return courses;
+        }
     }
 }

@@ -144,5 +144,24 @@ namespace ResultManagement.Controllers
             ViewBag.Message = _adminManager.SaveTeacher(teacher);
             return View();
         }
+
+
+        [HttpGet]
+        public ActionResult AssignCourseToTeacher()
+        {
+            AssignCourseToTeacher act = new AssignCourseToTeacher();
+            act.Teachers = _adminManager.GetAllTeachers();
+            act.Courses = _adminManager.GetAllCourses();
+            return View(act);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignCourseToTeacher(AssignCourseToTeacher act)
+        {
+            act.Teachers = _adminManager.GetAllTeachers();
+            act.Courses = _adminManager.GetAllCourses();
+            return View();
+        }
     }
 }
