@@ -350,13 +350,8 @@ input, select, textarea {
     opacity: 1;
 }
 
-.table {
+.tabtab {
     margin: auto;
-    width: 50% !important;
+    width: 70% !important;
 }
 
-.table td {
-    margin: auto;
-    width: 380px !important;
-    
-}

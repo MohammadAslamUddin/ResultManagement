@@ -1,9 +1,11 @@
-﻿@model ResultManagement.Models.TeacherInfo
+﻿@using ResultManagement.Models
+@model ResultManagement.Models.TeacherInfo
 
 @{
     ViewBag.Title = "AddingNewTeacher";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     string message = ViewBag.message;
+    List<Department> departments = ViewBag.Departments;
 }
 
 
@@ -19,7 +21,7 @@
                 <br/>
                 <h3 class="text-center">Fill Up Teacher's Information</h3>
                 <br/>
-                <table class="table table-borderless">
+                <table class="table table-borderless tabtab">
                     <tr>
                         <td>@Html.LabelFor(model => model.Teacher_Name)</td>
                         <td>@Html.TextBoxFor(model => model.Teacher_Name)</td>
@@ -29,6 +31,19 @@
                         <td>@Html.LabelFor(model => model.Teacher_Email)</td>
                         <td>@Html.TextBoxFor(model => model.Teacher_Email)</td>
                         <td>@Html.ValidationMessageFor(model => model.Teacher_Email)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Department_Id)</td>
+                        <td>
+                            <select name="Department_Id" id="Department_Id">
+                                <option>Select A Department</option>
+                                @foreach (var dep in departments)
+                                {
+                                    <option value="@dep.Department_Id">@dep.Department_Title</option>
+                                }
+                            </select>
+                        </td>
+                        <td>@Html.ValidationMessageFor(model => model.Department_Id)</td>
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(model => model.Teacher_Birth_Date)</td>
@@ -61,6 +76,11 @@
                         <td>@Html.ValidationMessageFor(model => model.Designation)</td>
                     </tr>
                     <tr>
+                        <td>@Html.LabelFor(model => model.ImageFile)</td>
+                        <td><input type="file" name="ImageFile" id="ImageFile" required /></td>
+                        <td>@Html.ValidationMessageFor(model => model.ImageFile)</td>
+                    </tr>
+                    <tr>
                         <td>@Html.LabelFor(model => model.Teachers_Password)</td>
                         <td>@Html.TextBoxFor(model => model.Teachers_Password)</td>
                         <td>@Html.ValidationMessageFor(model => model.Teachers_Password)</td>
@@ -70,10 +90,16 @@
                         <td>@Html.TextBoxFor(model => model.Teachers_Confirm_Password)</td>
                         <td>@Html.ValidationMessageFor(model => model.Teachers_Confirm_Password)</td>
                     </tr>
+                    <tr>
+                        <td colspan="3" class="text-center"><button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Teacher</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-center">@Html.ValidationSummary(true, @message, new { @class = "text-danger" })</td>
+                    </tr>
                 </table>
-                @Html.ValidationSummary(true, @message, new {@class = "text-danger"})
+                
                 <p class="text-center">
-                    <button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Teacher</button>
+                    
                 </p>
             </div>
             </div>

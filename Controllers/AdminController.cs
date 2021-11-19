@@ -123,6 +123,7 @@ namespace ResultManagement.Controllers
         [HttpGet]
         public ActionResult AddingNewTeacher()
         {
+            ViewBag.Departments = _adminManager.GetAllDepartments();
             return View();
         }
 
@@ -131,7 +132,16 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddingNewTeacher(TeacherInfo teacher)
         {
-            //ViewBag.Message = _adminManager.Save(teacher);
+            ViewBag.Departments = _adminManager.GetAllDepartments();
+
+            string fileName = Path.GetFileNameWithoutExtension(teacher.ImageFile.FileName);
+            string extension = Path.GetExtension(teacher.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
+            teacher.ImagePath = "~/Image/Teacher/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/Teacher/"), fileName);
+            teacher.ImageFile.SaveAs(fileName);
+
+            ViewBag.Message = _adminManager.SaveTeacher(teacher);
             return View();
         }
     }

@@ -67,15 +67,42 @@ namespace ResultManagement.Manager
 
         public string SaveStudent(StudentInfo student)
         {
-            int rowAffected = _adminGateway.SaveStudent(student);
-            if (rowAffected > 0)
+            if (!_adminGateway.IsStudentExist(student))
             {
-                return "New Student Information Saved!";
+                int rowAffected = _adminGateway.SaveStudent(student);
+                if (rowAffected > 0)
+                {
+                    return "New Student Information Saved!";
+                }
+                else
+                {
+                    _adminGateway.DeleteFromRoleAndLogInSystem(student);
+                    return "Saving failed!";
+                }
             }
             else
             {
-                int affected = _adminGateway.DeleteFromRoleAndLogInSystem(student);
-                return "Saving failed!";
+                return "Student Already Exist";
+            }
+        }
+
+        public string SaveTeacher(TeacherInfo teacher)
+        {
+            if (!_adminGateway.IsTeacherExist(teacher))
+            {
+                int rowAffected = _adminGateway.SaveTeacher(teacher);
+                if (rowAffected > 0)
+                {
+                    return "New Teacher's Information Saved!";
+                }
+                else
+                {
+                    return "Teacher's Information Saving failed!";
+                }
+            }
+            else
+            {
+                return "Teacher's Information Already Exist";
             }
         }
     }

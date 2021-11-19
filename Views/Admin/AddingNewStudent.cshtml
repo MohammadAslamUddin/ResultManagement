@@ -24,7 +24,7 @@
                         <br />
                         <h3 class="text-center">Fill Up Student's Information</h3>
                         <br />
-                        <table class="table table-borderless d-block table-responsive" >
+                        <table class="table table-borderless table-responsive tabtab" >
                             <tr>
                                 <td>@Html.LabelFor(model => model.Student_Name)</td>
                                 <td>@Html.TextBoxFor(model => model.Student_Name)</td>
@@ -98,12 +98,14 @@
                                 <td>@Html.TextBoxFor(model => model.Student_Confirm_Password)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Student_Confirm_Password)</td>
                             </tr>
+                            <tr>
+                                <td colspan="3" class="text-center"><button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">@Html.ValidationSummary(true, @message, new { @class = "text-danger" })</td>
+                            </tr>
                         </table>
-                        @Html.ValidationSummary(true, @message, new { @class = "text-danger" })
-                        <p class="text-center">
-                            <button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button>
-                        </p>
-                    </div>
+                </div>
                 </div>
         </div>
     </fieldset>

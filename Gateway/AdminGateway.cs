@@ -610,5 +610,188 @@ namespace ResultManagement.Gateway
             Connection.Close();
             return RowAffected;
         }
+
+        public int SaveTeacher(TeacherInfo teacher)
+        {
+
+            int rowAffect = InsertTecherDataIntoRoleAndLoginPage(teacher);
+            if (rowAffect > 0)
+            {
+                teacher.Teacher_TotalCredt = 24;
+                teacher.Teacher_RemainingCredit = 24;
+                Query = "INSERT INTO Teacher VALUES(@name,@email,@contact,@dob,@add,@tfname,@tmname,@dep,@pass,@img,@tcourse,@rcourse,@desig);";
+                Command = new SqlCommand(Query, Connection);
+
+                Command.Parameters.Clear();
+                Command.Parameters.Add("name", SqlDbType.VarChar);
+                Command.Parameters["name"].Value = teacher.Teacher_Name;
+
+                Command.Parameters.Add("email", SqlDbType.VarChar);
+                Command.Parameters["email"].Value = teacher.Teacher_Email;
+
+                Command.Parameters.Add("contact", SqlDbType.VarChar);
+                Command.Parameters["contact"].Value = teacher.Teacher_Contact;
+
+                Command.Parameters.Add("dob", SqlDbType.VarChar);
+                Command.Parameters["dob"].Value = teacher.Teacher_Birth_Date;
+
+                Command.Parameters.Add("add", SqlDbType.VarChar);
+                Command.Parameters["add"].Value = teacher.Teacher_Address;
+
+                Command.Parameters.Add("tfname", SqlDbType.VarChar);
+                Command.Parameters["tfname"].Value = teacher.Teacher_Father_Name;
+
+                Command.Parameters.Add("tmname", SqlDbType.VarChar);
+                Command.Parameters["tmname"].Value = teacher.Teacher_Mother_Name;
+
+                Command.Parameters.Add("dep", SqlDbType.Int);
+                Command.Parameters["dep"].Value = teacher.Department_Id;
+
+                Command.Parameters.Add("tcourse", SqlDbType.Int);
+                Command.Parameters["tcourse"].Value = teacher.Teacher_TotalCredt;
+
+                Command.Parameters.Add("rcourse", SqlDbType.Int);
+                Command.Parameters["rcourse"].Value = teacher.Teacher_RemainingCredit;
+
+                Command.Parameters.Add("img", SqlDbType.VarChar);
+                Command.Parameters["img"].Value = teacher.ImagePath;
+
+                Command.Parameters.Add("desig", SqlDbType.VarChar);
+                Command.Parameters["desig"].Value = teacher.Designation;
+
+                Command.Parameters.Add("pass", SqlDbType.NVarChar);
+                Command.Parameters["pass"].Value = teacher.Teachers_Password;
+
+
+                Connection.Open();
+
+                RowAffected = Command.ExecuteNonQuery();
+
+                Connection.Close();
+            }
+            else
+            {
+                return rowAffect;
+            }
+
+            return RowAffected;
+        }
+
+        private int InsertTecherDataIntoRoleAndLoginPage(TeacherInfo teacher)
+        {
+            int rowAffected = InsertLoginPageDataTeacher(teacher);
+            if (rowAffected > 0)
+            {
+                int userRole = GetUserRoleTeacher(teacher);
+                Query = "INSERT INTO Role VALUES(@role, 'Teacher')";
+                Command = new SqlCommand(Query, Connection);
+
+                Command.Parameters.Clear();
+                Command.Parameters.Add("role", SqlDbType.Int);
+                Command.Parameters["role"].Value = userRole;
+
+                Connection.Open();
+
+                RowAffected = Command.ExecuteNonQuery();
+
+                Connection.Close();
+                return RowAffected;
+            }
+            else
+            {
+                return rowAffected;
+            }
+        }
+
+        private int GetUserRoleTeacher(TeacherInfo teacher)
+        {
+            Query = "SELECT * FROM LOGIN WHERE email = @email";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = teacher.Teacher_Email;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            int userRole = 0;
+            if (Reader.Read())
+            {
+                userRole = (int)Reader["id"];
+            }
+            Connection.Close();
+            return userRole;
+        }
+
+        private int InsertLoginPageDataTeacher(TeacherInfo teacher)
+        {
+            Query = "INSERT INTO LOGIN VALUES(@semail, @spass)";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("semail", SqlDbType.VarChar);
+            Command.Parameters["semail"].Value = teacher.Teacher_Email;
+
+            Command.Parameters.Add("spass", SqlDbType.NVarChar);
+            Command.Parameters["spass"].Value = teacher.Teachers_Password;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
+        }
+
+        public bool IsStudentExist(StudentInfo student)
+        {
+            Query = "SELECT * FROM Student WHERE student_email = @email OR student_contact = @contact;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = student.Student_Email;
+
+            Command.Parameters.Add("contact", SqlDbType.VarChar);
+            Command.Parameters["contact"].Value = student.Student_Contact;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+
+        public bool IsTeacherExist(TeacherInfo teacher)
+        {
+            Query = "SELECT * FROM Teacher WHERE teacher_email = @email OR teacher_contact = @contact;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = teacher.Teacher_Email;
+
+            Command.Parameters.Add("contact", SqlDbType.VarChar);
+            Command.Parameters["contact"].Value = teacher.Teacher_Contact;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
     }
 }
