@@ -1,6 +1,7 @@
 ﻿using ResultManagement.Gateway;
 using ResultManagement.Models;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ResultManagement.Manager
 {
@@ -106,12 +107,12 @@ namespace ResultManagement.Manager
             }
         }
 
-        public List<TeacherInfo> GetAllTeachers()
+        public List<SelectListItem> GetAllTeachers()
         {
             return _adminGateway.GetAllTeachers();
         }
 
-        public List<Course> GetAllCourses()
+        public List<SelectListItem> GetAllCourses()
         {
             return _adminGateway.GetAllCourses();
         }

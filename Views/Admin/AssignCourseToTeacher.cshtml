@@ -1,55 +1,87 @@
-﻿@model ResultManagement.Models.AssignCourseToTeacher
+﻿@using ResultManagement.Models
+@model ResultManagement.Models.AssignCourseToTeacher
 
 @{
     ViewBag.Title = "AssignCourseToTeacher";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<SelectListItem> teachers = Model.Teachers;
+    List<SelectListItem> courses = Model.Courses;
+    string message = ViewBag.Message;
 }
-@foreach (var c in Model.Courses)
+
+
+@using (Html.BeginForm())
 {
-
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <div class="container bg-white mt-5 mb-5 justify-content-center">
+                <div class="row">
+                    <div class="box">
+                        <br />
+                        <br />
+                        <h3 class="text-center">Fill Up Student's Information</h3>
+                        <br />
+                        <table class="table table-borderless table-responsive tabtab">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_Teacher_Id)</td>
+                                <td>@Html.DropDownListFor(model => model.ACT_Teacher_Id, @teachers, new { @id = "teacherid" })</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_Teacher_Id)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_Teacher_Department)</td>
+                                <td>@Html.TextBoxFor(model => model.ACT_Teacher_Department)</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_Teacher_Department)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_Teacher_RemainingCredit)</td>
+                                <td>@Html.TextBoxFor(model => model.ACT_Teacher_RemainingCredit)</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_Teacher_RemainingCredit)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_Course_Id)</td>
+                                <td>@Html.DropDownListFor(model => model.ACT_Course_Id, @courses, new { id = "courseid" })</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_Course_Id)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_CourseCredit)</td>
+                                <td>@Html.TextBoxFor(model => model.ACT_CourseCredit)</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_CourseCredit)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center"><button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-center">@Html.ValidationSummary(true, @message, new { @class = "text-danger" })</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    }
 }
-<h2>AssignCourseToTeacher</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>AssignCourseToTeacher</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ACT_Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ACT_Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ACT_Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+@section scripts{
+        <script type="text/javascript">
+            $(function () {
+                $("#teacherid").on('click', function() {
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ACT_Teacher_Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ACT_Teacher_Id,)
-                @Html.ValidationMessageFor(model => model.ACT_Teacher_Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    var str = $("#teacherid").val();
+                    var json = { id: str };
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ACT_Course_Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ACT_Course_Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ACT_Course_Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    $("#ACT_Teacher_RemainingCredit").prop(disable, true);
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetTeacherInfo", "Admin")',
+                        contentType: 'application/json',
+                        data: JSON.stringify(json),
+                        success: function (response) {
+                            $('#ACT_Teacher_Department').val(response['ACT_Teacher_Department']);
+                        }
+                    });
+                });
+            });
+        </script>
+    }

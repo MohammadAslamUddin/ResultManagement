@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Mvc;
 
 namespace ResultManagement.Gateway
 {
@@ -794,7 +795,7 @@ namespace ResultManagement.Gateway
             return hasRows;
         }
 
-        public List<TeacherInfo> GetAllTeachers()
+        public List<SelectListItem> GetAllTeachers()
         {
             Query = "SELECT * FROM Teacher inner join Department on Teacher.teacher_department = Department.department_id";
             Command = new SqlCommand(Query, Connection);
@@ -804,10 +805,17 @@ namespace ResultManagement.Gateway
             Reader = Command.ExecuteReader();
 
             List<TeacherInfo> teachers = new List<TeacherInfo>();
+            List<SelectListItem> teacherss = new List<SelectListItem>();
 
             while (Reader.Read())
             {
                 _teacher = new TeacherInfo();
+                SelectListItem teacherr = new SelectListItem();
+
+                teacherr.Value = Reader["teacher_id"].ToString();
+                teacherr.Text = Reader["teacher_name"].ToString();
+
+
                 _teacher.Teacher_Id = (int)Reader["teacher_id"];
                 _teacher.Teacher_Name = Reader["teacher_name"].ToString();
                 _teacher.Teacher_Email = Reader["teacher_email"].ToString();
@@ -825,13 +833,14 @@ namespace ResultManagement.Gateway
                 _teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
 
                 teachers.Add(_teacher);
+                teacherss.Add(teacherr);
             }
             Reader.Close();
             Connection.Close();
-            return teachers;
+            return teacherss;
         }
 
-        public List<Course> GetAllCourses()
+        public List<SelectListItem> GetAllCourses()
         {
             Query = "SELECT * FROM Course";
             Command = new SqlCommand(Query, Connection);
@@ -841,9 +850,16 @@ namespace ResultManagement.Gateway
             Reader = Command.ExecuteReader();
 
             List<Course> courses = new List<Course>();
+
+            List<SelectListItem> coursess = new List<SelectListItem>();
             while (Reader.Read())
             {
                 Course course = new Course();
+                SelectListItem coursee = new SelectListItem();
+
+                coursee.Value = Reader["course_id"].ToString();
+                coursee.Text = Reader["course_title"].ToString();
+
 
                 course.CourseId = (int)Reader["course_id"];
                 course.CourseCode = Reader["course_code"].ToString();
@@ -851,11 +867,12 @@ namespace ResultManagement.Gateway
                 course.CoursePoint = Convert.ToDouble(Reader["course_credit"]);
 
                 courses.Add(course);
+                coursess.Add(coursee);
             }
             Reader.Close();
             Connection.Close();
 
-            return courses;
+            return coursess;
         }
     }
 }

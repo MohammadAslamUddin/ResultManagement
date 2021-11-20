@@ -163,5 +163,13 @@ namespace ResultManagement.Controllers
             act.Courses = _adminManager.GetAllCourses();
             return View();
         }
+
+
+        [HttpPost]
+        public JsonResult GetTeacherInfo(int id)
+        {
+            TeacherInfo teacher = _adminManager.TeacherDetails(id);
+            return Json(teacher);
+        }
     }
 }
