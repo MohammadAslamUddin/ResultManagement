@@ -25,7 +25,7 @@
                         <table class="table table-borderless table-responsive tabtab">
                             <tr>
                                 <td>@Html.LabelFor(model => model.ACT_Teacher_Id)</td>
-                                <td>@Html.DropDownListFor(model => model.ACT_Teacher_Id, @teachers, new { @id = "teacherid" })</td>
+                                <td>@Html.DropDownListFor(model => model.ACT_Teacher_Id, @teachers)</td>
                                 <td>@Html.ValidationMessageFor(model => model.ACT_Teacher_Id)</td>
                             </tr>
                             <tr>
@@ -62,26 +62,32 @@
     }
 }
 
-@section scripts{
-        <script type="text/javascript">
-            $(function () {
-                $("#teacherid").on('click', function() {
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#ACT_Teacher_Id').on('change', function () {
 
-                    var str = $("#teacherid").val();
-                    var json = { id: str };
+                $('#ACT_Teacher_Department').val('');
+                $('#ACT_Teacher_RemainingCredit').val('');
 
-                    $("#ACT_Teacher_RemainingCredit").prop(disable, true);
+                $('#ACT_Teacher_Department').prop('disabled', true);
+                $('#ACT_Teacher_RemainingCredit').prop('disabled', true);
 
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("GetTeacherInfo", "Admin")',
-                        contentType: 'application/json',
-                        data: JSON.stringify(json),
-                        success: function (response) {
-                            $('#ACT_Teacher_Department').val(response['ACT_Teacher_Department']);
-                        }
-                    });
+                var teacherId = $('#ACT_Teacher_Id').val();
+                var json = { id: teacherId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetTeacherInfo", "Admin")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    success: function (response) {
+                        $('#ACT_Teacher_Department').val(response['Department_Name']);
+                        $('#ACT_Teacher_RemainingCredit').val(response['Teacher_RemainingCredit']);
+                    }
                 });
             });
-        </script>
-    }
+        });
+    </script>
+}

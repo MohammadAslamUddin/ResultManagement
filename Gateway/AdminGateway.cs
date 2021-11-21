@@ -805,7 +805,10 @@ namespace ResultManagement.Gateway
             Reader = Command.ExecuteReader();
 
             List<TeacherInfo> teachers = new List<TeacherInfo>();
-            List<SelectListItem> teacherss = new List<SelectListItem>();
+            List<SelectListItem> teacherss = new List<SelectListItem>()
+            {
+                new SelectListItem(){Text = "Select A Teacher", Value = ""}
+            };
 
             while (Reader.Read())
             {
