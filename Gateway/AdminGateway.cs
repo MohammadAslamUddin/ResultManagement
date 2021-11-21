@@ -854,7 +854,10 @@ namespace ResultManagement.Gateway
 
             List<Course> courses = new List<Course>();
 
-            List<SelectListItem> coursess = new List<SelectListItem>();
+            List<SelectListItem> coursess = new List<SelectListItem>()
+            {
+                new SelectListItem(){Value = "", Text = "Select A Course"}
+            };
             while (Reader.Read())
             {
                 Course course = new Course();
@@ -876,6 +879,38 @@ namespace ResultManagement.Gateway
             Connection.Close();
 
             return coursess;
+        }
+
+        public Course CourseDetails(int id)
+        {
+            Query = "SELECT Course.course_id, course_code, course_title, course_credit, semester_id, department_title FROM COURSE " +
+                    "INNER JOIN AssignCourseToDepartment ON Course.course_id = AssignCourseToDepartment.course_id " +
+                    "INNER JOIN Department ON AssignCourseToDepartment.department_id = Department.department_id WHERE Course.course_id = @id;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            Course course = new Course();
+
+            while (Reader.Read())
+            {
+                course.CourseId = (int)Reader["course_id"];
+                course.CourseCode = Reader["course_code"].ToString();
+                course.CourseTitle = Reader["course_title"].ToString();
+                course.CoursePoint = Convert.ToDouble(Reader["course_credit"]);
+                course.DepartmentName = Reader["department_title"].ToString();
+                course.SemesterId = (int)Reader["semester_id"];
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return course;
         }
     }
 }

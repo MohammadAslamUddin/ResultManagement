@@ -18,6 +18,12 @@ namespace ResultManagement.Models
         [Display(Name = "Teacher's Remaining Credit")]
         public double ACT_Teacher_RemainingCredit { get; set; }
 
+        [Display(Name = "Course Semester")]
+        public int ACT_CourseSemester { get; set; }
+
+        [Display(Name = "Course Department")]
+        public string ACT_CourseDepartment { get; set; }
+
 
         [Display(Name = "Course Title")]
         public int ACT_Course_Id { get; set; }

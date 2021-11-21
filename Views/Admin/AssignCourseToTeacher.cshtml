@@ -40,13 +40,23 @@
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.ACT_Course_Id)</td>
-                                <td>@Html.DropDownListFor(model => model.ACT_Course_Id, @courses, new { id = "courseid" })</td>
+                                <td>@Html.DropDownListFor(model => model.ACT_Course_Id, @courses)</td>
                                 <td>@Html.ValidationMessageFor(model => model.ACT_Course_Id)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_CourseDepartment)</td>
+                                <td>@Html.TextBoxFor(model => model.ACT_CourseDepartment)</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_CourseDepartment)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.ACT_CourseCredit)</td>
                                 <td>@Html.TextBoxFor(model => model.ACT_CourseCredit)</td>
                                 <td>@Html.ValidationMessageFor(model => model.ACT_CourseCredit)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.ACT_CourseSemester)</td>
+                                <td>@Html.TextBoxFor(model => model.ACT_CourseSemester)</td>
+                                <td>@Html.ValidationMessageFor(model => model.ACT_CourseSemester)</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-center"><button type="submit" value="Save" class="btn btn-outline-secondary btn_page">Save Student</button></td>
@@ -85,6 +95,32 @@
                     success: function (response) {
                         $('#ACT_Teacher_Department').val(response['Department_Name']);
                         $('#ACT_Teacher_RemainingCredit').val(response['Teacher_RemainingCredit']);
+                    }
+                });
+            });
+
+            $('#ACT_Course_Id').on('change', function () {
+
+                $('#ACT_CourseCredit').val('');
+                $('#ACT_CourseDepartment').val('');
+                $('#ACT_CourseSemester').val('');
+
+                $('#ACT_CourseCredit').prop('disabled', true);
+                $('#ACT_CourseDepartment').prop('disabled', true);
+                $('#ACT_CourseSemester').prop('disabled', true);
+
+                var courseId = $('#ACT_Course_Id').val();
+                var json = { cid: courseId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseInfo", "Admin")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    success: function (response) {
+                        $('#ACT_CourseCredit').val(response['CoursePoint']);
+                        $('#ACT_CourseDepartment').val(response['DepartmentName']);
+                        $('#ACT_CourseSemester').val(response['SemesterId']);
                     }
                 });
             });

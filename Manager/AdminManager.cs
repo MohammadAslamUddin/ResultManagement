@@ -116,5 +116,10 @@ namespace ResultManagement.Manager
         {
             return _adminGateway.GetAllCourses();
         }
+
+        public Course CourseDetails(int id)
+        {
+            return _adminGateway.CourseDetails(id);
+        }
     }
 }
