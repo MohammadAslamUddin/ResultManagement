@@ -121,5 +121,34 @@ namespace ResultManagement.Manager
         {
             return _adminGateway.CourseDetails(id);
         }
+
+        public string AssignCourse(AssignCourseToTeacher act)
+        {
+            if (_adminGateway.IsCourseAssignBefore(act))
+            {
+                return "This course is already assigned!";
+            }
+            else
+            {
+                int rowAffected = _adminGateway.AssignCourse(act);
+                if (rowAffected > 0)
+                {
+                    UpdateTeachersRemainingCredit(act);
+                    return "Course Assigned to Teacher!";
+                }
+                else
+                {
+                    return "Assigning Course Failed!";
+                }
+            }
+        }
+
+        private int UpdateTeachersRemainingCredit(AssignCourseToTeacher act)
+        {
+            double courseCredit = _adminGateway.CourseCredit(act.ACT_Course_Id);
+            double TeachersCredit = _adminGateway.TeachersCredit(act.ACT_Teacher_Id);
+            double credit = TeachersCredit - courseCredit;
+            int rowAffected = _adminGateway.UpdateTeacherRemaingCredit(credit, act.ACT_Teacher_Id);
+        }
     }
 }

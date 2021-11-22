@@ -912,5 +912,116 @@ namespace ResultManagement.Gateway
 
             return course;
         }
+
+        public bool IsCourseAssignBefore(AssignCourseToTeacher act)
+        {
+            Query = "SELECT * FROM AssignCourseToTeacher WHERE act_course_id = @id";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = act.ACT_Course_Id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+
+        public int AssignCourse(AssignCourseToTeacher act)
+        {
+            Query = "INSERT INTO AssignCourseToTeacher VALUES(@tid, @cid);";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("cid", SqlDbType.Int);
+            Command.Parameters["cid"].Value = act.ACT_Course_Id;
+            Command.Parameters.Add("tid", SqlDbType.Int);
+            Command.Parameters["tid"].Value = act.ACT_Teacher_Id;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
+        }
+
+        public double CourseCredit(int id)
+        {
+            Query = "SELECT course_id, course_code, course_title, course_credit FROM COURSE WHERE course_id = @id;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            double credit = 0;
+
+            while (Reader.Read())
+            {
+                credit = Convert.ToDouble(Reader["course_credit"]);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return credit;
+        }
+
+        public double TeachersCredit(int id)
+        {
+            Query = "SELECT * FROM Teacher WHERE teacher_id = @id";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            double credit = 0;
+
+            while (Reader.Read())
+            {
+                credit = (double)Convert.ToDouble(Reader["remaining_course_credit"]);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return credit;
+        }
+
+        public int UpdateTeacherRemaingCredit(double credit, int id)
+        {
+            Query = "UPDATE Teacher SET remaining_course_credit = @credit WHERE teacher_id = @id";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("credit", SqlDbType.Float);
+            Command.Parameters["credit"].Value = credit;
+
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+            return RowAffected;
+        }
     }
 }

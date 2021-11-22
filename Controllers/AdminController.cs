@@ -159,6 +159,9 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AssignCourseToTeacher(AssignCourseToTeacher act)
         {
+            ViewBag.Message = _adminManager.AssignCourse(act);
+
+
             act.Teachers = _adminManager.GetAllTeachers();
             act.Courses = _adminManager.GetAllCourses();
             return View();
