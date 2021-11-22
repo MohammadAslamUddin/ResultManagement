@@ -164,7 +164,7 @@ namespace ResultManagement.Controllers
 
             act.Teachers = _adminManager.GetAllTeachers();
             act.Courses = _adminManager.GetAllCourses();
-            return View();
+            return View(act);
         }
 
 
