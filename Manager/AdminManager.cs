@@ -124,21 +124,31 @@ namespace ResultManagement.Manager
 
         public string AssignCourse(AssignCourseToTeacher act)
         {
-            if (_adminGateway.IsCourseAssignBefore(act))
+            double courseCredit = _adminGateway.CourseCredit(act.ACT_Course_Id);
+            double teacherCredit = _adminGateway.TeachersCredit(act.ACT_Teacher_Id);
+            
+            if (teacherCredit < courseCredit)
             {
-                return "This course is already assigned!";
+                return "Teacher's credit is not supporting";
             }
             else
             {
-                int rowAffected = _adminGateway.AssignCourse(act);
-                if (rowAffected > 0)
+                if (_adminGateway.IsCourseAssignBefore(act))
                 {
-                    UpdateTeachersRemainingCredit(act);
-                    return "Course Assigned to Teacher!";
+                    return "This course is already assigned!";
                 }
                 else
                 {
-                    return "Assigning Course Failed!";
+                    int rowAffected = _adminGateway.AssignCourse(act);
+                    if (rowAffected > 0)
+                    {
+                        UpdateTeachersRemainingCredit(act);
+                        return "Course Assigned to Teacher!";
+                    }
+                    else
+                    {
+                        return "Assigning Course Failed!";
+                    }
                 }
             }
         }
@@ -149,6 +159,7 @@ namespace ResultManagement.Manager
             double TeachersCredit = _adminGateway.TeachersCredit(act.ACT_Teacher_Id);
             double credit = TeachersCredit - courseCredit;
             int rowAffected = _adminGateway.UpdateTeacherRemaingCredit(credit, act.ACT_Teacher_Id);
+            return 1;
         }
     }
 }
