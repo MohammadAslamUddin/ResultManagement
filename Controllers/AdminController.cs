@@ -182,5 +182,18 @@ namespace ResultManagement.Controllers
             Course course = _adminManager.CourseDetails(cid);
             return Json(course);
         }
+
+        [HttpGet]
+        public ActionResult UnAssignAllCourses()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UnAssignAllCourses(int? a)
+        {
+            ViewBag.Message = _adminManager.UnAssignAllCourses();
+            return View();
+        }
     }
 }

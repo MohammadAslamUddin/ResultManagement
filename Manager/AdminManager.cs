@@ -161,5 +161,19 @@ namespace ResultManagement.Manager
             int rowAffected = _adminGateway.UpdateTeacherRemaingCredit(credit, act.ACT_Teacher_Id);
             return 1;
         }
+
+        public string UnAssignAllCourses()
+        {
+            int rowAffected = _adminGateway.UnAssignAllCourses();
+            if (rowAffected>0)
+            {
+                _adminGateway.RemainingCreditUpdate();
+                return "UnAssigned All Courses Successfully!";
+            }
+            else
+            {
+                return "UnAssigning Failed!";
+            }
+        }
     }
 }

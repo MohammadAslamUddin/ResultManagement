@@ -1023,5 +1023,31 @@ namespace ResultManagement.Gateway
             Connection.Close();
             return RowAffected;
         }
+
+        public int UnAssignAllCourses()
+        {
+            Query = "DELETE FROM AssignCourseToTeacher;";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+            return RowAffected;
+        }
+
+        public int RemainingCreditUpdate()
+        {
+            Query = "UPDATE Teacher SET remaining_course_credit = teacher_course_credit;";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+            return RowAffected;
+        }
     }
 }

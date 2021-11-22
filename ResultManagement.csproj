@@ -403,6 +403,7 @@
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Admin\AssignCourseToTeacher.cshtml" />
+    <Content Include="Views\Admin\UnAssignAllCourses.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

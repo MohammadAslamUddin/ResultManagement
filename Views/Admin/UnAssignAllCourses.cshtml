@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "UnAssignAllCourses";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string message = ViewBag.Message;
+}
+
+@using (Html.BeginForm("UnAssignAllCourses", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container bg-white mt-5 mb-5 justify-content-center">
+            <div class="row">
+                <div class="box">
+                    <br />
+                    <br />
+                    <br />
+                    <table class="table table-borderless table-responsive tabtab py-5">
+                        <tr class="text-center">
+                            <td colspan="2">Are You Sure to UnAssign All Courses?</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center"><button type="submit" value="" class="btn btn-outline-secondary btn_page">Yes, I'm</button></td>
+                            <td class="text-center"><button  class="btn btn-outline-secondary btn_page">@Html.ActionLink("No","Index")</button></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <div class="text-danger text-center py-5">
+                        <label>@message</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
