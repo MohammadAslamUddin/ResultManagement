@@ -22,6 +22,7 @@ namespace ResultManagement
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/jquery.timepicker.js",
+                "~/Scripts/bootstrap-datepicker.min.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -31,6 +32,7 @@ namespace ResultManagement
                 "~/Content/jquery.timepicker.min.css",
                 "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
                 "~/Content/jquery.ui.layout.css",
+                "~/Content/bootstrap-datepicker.min.css",
                 "~/Content/site.css"));
 
             bundles.Add(new Bundle("~/scripts/core").Include(
@@ -42,6 +44,7 @@ namespace ResultManagement
                 "~/Scripts/bootstrap-datetimepicker.min.js",
                 "~/Scripts/jquery-ui.unobtrusive.js",
                 "~/Scripts/jquery.timepicker.js",
+                "~/Scripts/bootstrap-datepicker.min.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/FontAwesome").Include(

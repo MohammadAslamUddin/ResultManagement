@@ -97,6 +97,5 @@ F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\vbc.exe.config
 F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\vbc.rsp
 F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\VBCSCompiler.exe
 F:\B. Sc\Project USTC\ResultManagement\bin\roslyn\VBCSCompiler.exe.config
-F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csprojAssemblyReference.cache
 F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csproj.CoreCompileInputs.cache
 F:\B. Sc\Project USTC\ResultManagement\obj\Debug\ResultManagement.csproj.CopyComplete

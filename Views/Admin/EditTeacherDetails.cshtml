@@ -16,7 +16,7 @@
                 <div class="box">
                     <div id="overlay">
                         <!--<div class="trick">-->
-                            @*<center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>*@
+                        @*<center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>*@
                         <!--</div>-->
                         <br />
                         <br />
@@ -26,42 +26,42 @@
                         <table class="table table-borderless">
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Name)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Name)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Name)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Email)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Email)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Email)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Email)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Birth_Date)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Birth_Date)</td>
+                                <td>@Html.EditorFor(model => model.Teacher_Birth_Date, new { htmlAttributes = new { @class = "datepicker" } })</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Birth_Date)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Contact)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Contact)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Contact)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Contact)</td>
                             <tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Address)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Address)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Address)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Address)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Father_Name)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Father_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Father_Name)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Father_Name)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Teacher_Mother_Name)</td>
-                                <td>@Html.EditorFor(model => model.Teacher_Mother_Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Teacher_Mother_Name)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Teacher_Mother_Name)</td>
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.Designation)</td>
-                                <td>@Html.EditorFor(model => model.Designation)</td>
+                                <td>@Html.TextBoxFor(model => model.Designation)</td>
                                 <td>@Html.ValidationMessageFor(model => model.Designation)</td>
                             </tr>
                         </table>
@@ -77,3 +77,15 @@
     </fieldset>
 }
 
+
+@section scripts
+{
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".datepicker").datepicker({
+                dateFormat: "yyyy/mm/dd"
+            });
+        });
+    </script>
+}

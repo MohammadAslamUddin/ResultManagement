@@ -72,7 +72,7 @@ namespace ResultManagement.Gateway
                 _student.Student_Name = Reader["student_name"].ToString();
                 _student.Student_Email = Reader["student_email"].ToString();
                 _student.Student_Contact = Reader["student_contact"].ToString();
-                _student.Student_Birth_Date = ((DateTime)Reader["student_date_of_birth"]).ToString("MM/dd/yyyy");
+                _student.Student_Birth_Date = (DateTime)Reader["student_date_of_birth"];
                 _student.Student_Address = Reader["student_address"].ToString();
                 _student.Student_Father_Name = Reader["student_fathers_name"].ToString();
                 _student.Student_Father_Contact = Reader["student_fathers_contact"].ToString();
@@ -125,7 +125,7 @@ namespace ResultManagement.Gateway
                 _teacher.Designation = Reader["teacher_designation"].ToString();
                 _teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
                 _teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
-                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
+                _teacher.Teacher_Birth_Date = (DateTime)Reader["teacher_date_of_birth"];
                 _teacher.ImagePath = Reader["teacher_image"].ToString();
 
                 teachers.Add(_teacher);
@@ -157,7 +157,7 @@ namespace ResultManagement.Gateway
                 _teacher.Teacher_Name = Reader["teacher_name"].ToString();
                 _teacher.Teacher_Email = Reader["teacher_email"].ToString();
                 _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
-                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
+                _teacher.Teacher_Birth_Date = (DateTime)Reader["teacher_date_of_birth"];
                 _teacher.Teacher_Address = Reader["teacher_address"].ToString();
                 _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
                 _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
@@ -823,7 +823,7 @@ namespace ResultManagement.Gateway
                 _teacher.Teacher_Name = Reader["teacher_name"].ToString();
                 _teacher.Teacher_Email = Reader["teacher_email"].ToString();
                 _teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
-                _teacher.Teacher_Birth_Date = ((DateTime)Reader["teacher_date_of_birth"]).ToString("MM/dd/yyyy");
+                _teacher.Teacher_Birth_Date = (DateTime)Reader["teacher_date_of_birth"];
                 _teacher.Teacher_Address = Reader["teacher_address"].ToString();
                 _teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
                 _teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
