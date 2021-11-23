@@ -197,5 +197,29 @@ namespace ResultManagement.Controllers
             return View(results);
         }
 
+
+
+        [HttpGet]
+        public ActionResult AddResearchPaper(int? id)
+        {
+            ViewBag.teacher = _teacherManager.GetTeacherDetails();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddResearchPaper(int? id, Thesis thesis)
+        {
+            ViewBag.teacher = _teacherManager.GetTeacherDetails();
+
+            ViewBag.Message = _teacherManager.AddResearchInfo(thesis, id);
+
+            return View();
+        }
     }
 }

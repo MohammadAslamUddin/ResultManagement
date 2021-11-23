@@ -527,5 +527,29 @@ namespace ResultManagement.Gateway
 
             return theses;
         }
+
+        public int AddResearchInfo(Thesis thesis, int? id)
+        {
+            Query = "INSERT INTO Thesis VALUES(@title, @des, @tid)";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("title", SqlDbType.VarChar);
+            Command.Parameters["title"].Value = thesis.Thesis_Title;
+
+            Command.Parameters.Add("des", SqlDbType.VarChar);
+            Command.Parameters["des"].Value = thesis.Thesis_Description;
+
+            Command.Parameters.Add("tid", SqlDbType.Int);
+            Command.Parameters["tid"].Value = id;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
+        }
     }
 }

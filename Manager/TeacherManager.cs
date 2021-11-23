@@ -235,5 +235,18 @@ namespace ResultManagement.Manager
         {
             return _teacherGateway.GetAllThesis();
         }
+
+        public string AddResearchInfo(Thesis thesis, int? id)
+        {
+            int rowAffected = _teacherGateway.AddResearchInfo(thesis, id);
+            if (rowAffected > 0)
+            {
+                return "Research Information Added!";
+            }
+            else
+            {
+                return "Research Information Saving Failed!";
+            }
+        }
     }
 }

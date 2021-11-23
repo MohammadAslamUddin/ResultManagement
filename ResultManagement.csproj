@@ -531,6 +531,7 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Admin\AssignCourseToTeacher.cshtml" />
     <Content Include="Views\Admin\UnAssignAllCourses.cshtml" />
+    <Content Include="Views\Teacher\AddResearchPaper.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
