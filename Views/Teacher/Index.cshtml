@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
     List<Course> courses = ViewBag.courses;
+    List<Thesis> theses = Model.Theses;
 }
 
 @using (Html.BeginForm("Index", "Teacher"))
@@ -28,31 +29,45 @@
                         </div>
                         <table class="table table-borderless d-grid">
                             <tbody>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Department_Name)</td>
-                                    <td>@Html.DisplayFor(d => d.Department_Name)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Designation)</td>
-                                    <td>@Html.DisplayFor(d => d.Designation)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Teacher_Address)</td>
-                                    <td>@Html.DisplayFor(d => d.Teacher_Address)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Teacher_Birth_Date)</td>
-                                    <td>@Html.DisplayFor(d => d.Teacher_Birth_Date)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Teacher_Father_Name)</td>
-                                    <td>@Html.DisplayFor(d => d.Teacher_Father_Name)</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.DisplayNameFor(n => n.Teacher_Mother_Name)</td>
-                                    <td>@Html.DisplayFor(d => d.Teacher_Mother_Name)</td>
-                                </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Department_Name)</td>
+                                <td>@Html.DisplayFor(d => d.Department_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Designation)</td>
+                                <td>@Html.DisplayFor(d => d.Designation)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Teacher_Address)</td>
+                                <td>@Html.DisplayFor(d => d.Teacher_Address)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Teacher_Birth_Date)</td>
+                                <td>@Html.DisplayFor(d => d.Teacher_Birth_Date)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Teacher_Father_Name)</td>
+                                <td>@Html.DisplayFor(d => d.Teacher_Father_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(n => n.Teacher_Mother_Name)</td>
+                                <td>@Html.DisplayFor(d => d.Teacher_Mother_Name)</td>
+                            </tr>
                             </tbody>
+                        </table>
+                        
+                        <table class="table table-bordered d-grid table-responsive">
+                            <tr>
+                                <th>Thesis Title</th>
+                                <th>Thesis Description</th>
+                            </tr>
+                            @foreach (Thesis item in theses)
+                            {
+                                <tr>
+                                    <td>@item.Thesis_Title</td>
+                                    <td>@item.Thesis_Description</td>
+                                </tr>
+                            }
                         </table>
                         <button class="btn btn-outline-secondary btn_page" value="Update Password">@Html.ActionLink("Change Password", "UpdatePassword", new { id = Model.Teacher_Id, email = Model.Teacher_Email })</button>
                         <button class="btn btn-outline-secondary btn_page" value="Update Image">@Html.ActionLink("Change Image", "UpdateImage", new { id = Model.Teacher_Id })</button>

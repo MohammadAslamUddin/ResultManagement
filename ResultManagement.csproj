@@ -489,6 +489,7 @@
     <Compile Include="Models\ResultViewForTeacherModel.cs" />
     <Compile Include="Models\SemesterResult.cs" />
     <Compile Include="Models\TeacherInfo.cs" />
+    <Compile Include="Models\Thesis.cs" />
     <Compile Include="Models\UpdateImage.cs" />
     <Compile Include="Models\LogInfo.cs" />
     <Compile Include="Models\StudentInfo.cs" />

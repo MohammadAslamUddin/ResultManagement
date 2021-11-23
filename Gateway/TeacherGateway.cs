@@ -497,5 +497,35 @@ namespace ResultManagement.Gateway
 
             return results;
         }
+
+        public List<Thesis> GetAllThesis()
+        {
+            Query = "SELECT thesis_title, thesis_description FROM Thesis INNER JOIN Teacher ON Thesis.teacher_id = Teacher.teacher_id WHERE teacher_email = @email;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = email;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            List<Thesis> theses = new List<Thesis>();
+
+            while (Reader.Read())
+            {
+                Thesis thesis = new Thesis();
+
+                thesis.Thesis_Title = Reader["thesis_title"].ToString();
+                thesis.Thesis_Description = Reader["thesis_description"].ToString();
+
+                theses.Add(thesis);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return theses;
+        }
     }
 }

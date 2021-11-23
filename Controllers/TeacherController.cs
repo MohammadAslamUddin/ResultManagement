@@ -21,10 +21,12 @@ namespace ResultManagement.Controllers
 
 
 
-        public ActionResult Index()
+        public ActionResult Index(TeacherInfo teacher)
         {
-            _teacher = _teacherManager.GetTeacherDetails();
-            return View(_teacher);
+            teacher = new TeacherInfo();
+            teacher = _teacherManager.GetTeacherDetails();
+            teacher.Theses = _teacherManager.GetAllThesis();
+            return View(teacher);
         }
 
         [HttpGet]

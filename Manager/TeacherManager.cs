@@ -230,5 +230,10 @@ namespace ResultManagement.Manager
         {
             return _teacherGateway.GetResults(id);
         }
+
+        public List<Thesis> GetAllThesis()
+        {
+            return _teacherGateway.GetAllThesis();
+        }
     }
 }
