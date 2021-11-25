@@ -12,9 +12,11 @@ namespace ResultManagement.Models
         public int Student_Id { get; set; }
 
 
+
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Please enter a name")]
         public string Student_Name { get; set; }
+
 
 
         [Display(Name = "Email")]
@@ -22,9 +24,11 @@ namespace ResultManagement.Models
         public string Student_Email { get; set; }
 
 
+
         [Display(Name = "Date of Birth")]
         [Required(ErrorMessage = "Please select a date")]
         public DateTime Student_Birth_Date { get; set; }
+
 
 
         [Display(Name = "Contact No")]
@@ -32,9 +36,11 @@ namespace ResultManagement.Models
         public string Student_Contact { get; set; }
 
 
+
         [Display(Name = "Address")]
         [Required(ErrorMessage = "Please enter home address")]
         public string Student_Address { get; set; }
+
 
 
         [Display(Name = "Father's Name")]
@@ -42,9 +48,11 @@ namespace ResultManagement.Models
         public string Student_Father_Name { get; set; }
 
 
+
         [Display(Name = "Father's Contact")]
         [Required(ErrorMessage = "Please enter your father's contact")]
         public string Student_Father_Contact { get; set; }
+
 
 
         [Display(Name = "Mother's Name")]
@@ -52,13 +60,16 @@ namespace ResultManagement.Models
         public string Student_Mother_Name { get; set; }
 
 
+
         [Display(Name = "Mother's Contact")]
         [Required(ErrorMessage = "Please enter your mother's contact")]
         public string Student_Mother_Contact { get; set; }
 
 
+
         [Display(Name = "Student's Registration No")]
         public string Student_Reg { get; set; }
+
 
 
         [Display(Name = "Department")]
@@ -66,9 +77,11 @@ namespace ResultManagement.Models
         public int Department_Id { get; set; }
 
 
+
         [Display(Name = "Department Name")]
         [Required(ErrorMessage = "Please Select a department")]
         public string Department_Name { get; set; }
+
 
 
         [Display(Name = "Department Code")]
@@ -76,10 +89,12 @@ namespace ResultManagement.Models
         public string Department_Code { get; set; }
 
 
+
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password Required")]
         [PasswordPropertyText]
         public string Student_Password { get; set; }
+
 
 
         [Display(Name = "Confirm Password")]
@@ -90,9 +105,11 @@ namespace ResultManagement.Models
         public string Student_Confirm_Password { get; set; }
 
 
+
         [Display(Name = "Student Semester")]
         [Required(ErrorMessage = "Student Semester Required")]
         public int Student_Semester { get; set; }
+
 
 
         [Display(Name = "Type")]
@@ -100,9 +117,15 @@ namespace ResultManagement.Models
         public int Student_Type { get; set; }
 
 
+
+        [Required]
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }
-        public HttpPostedFileBase ImageFile { get; set; }
 
+
+
+        [Required]
+        [Display(Name = "Image File")]
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

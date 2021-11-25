@@ -13,9 +13,11 @@ namespace ResultManagement.Models
         public int Teacher_Id { get; set; }
 
 
+
         [Display(Name = "Name")]
         [Required(ErrorMessage = "Please enter a name")]
         public string Teacher_Name { get; set; }
+
 
 
         [Display(Name = "Email")]
@@ -23,9 +25,11 @@ namespace ResultManagement.Models
         public string Teacher_Email { get; set; }
 
 
+
         [Display(Name = "Date of Birth")]
         [Required(ErrorMessage = "Please select a date")]
         public DateTime Teacher_Birth_Date { get; set; }
+
 
 
         [Display(Name = "Contact No")]
@@ -33,9 +37,11 @@ namespace ResultManagement.Models
         public string Teacher_Contact { get; set; }
 
 
+
         [Display(Name = "Address")]
         [Required(ErrorMessage = "Please enter home address")]
         public string Teacher_Address { get; set; }
+
 
 
         [Display(Name = "Father's Name")]
@@ -43,9 +49,11 @@ namespace ResultManagement.Models
         public string Teacher_Father_Name { get; set; }
 
 
+
         [Display(Name = "Mother's Name")]
         [Required(ErrorMessage = "Please enter Teacher's mother's name")]
         public string Teacher_Mother_Name { get; set; }
+
 
 
         [Display(Name = "Department")]
@@ -53,9 +61,11 @@ namespace ResultManagement.Models
         public int Department_Id { get; set; }
 
 
+
         [Display(Name = "Department Name")]
         [Required(ErrorMessage = "Please Select a department")]
         public string Department_Name { get; set; }
+
 
 
         [Display(Name = "Department Code")]
@@ -63,14 +73,17 @@ namespace ResultManagement.Models
         public string Department_Code { get; set; }
 
 
+
         [Required(ErrorMessage = "Please Select a designation")]
         public string Designation { get; set; }
+
 
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password Required")]
         [PasswordPropertyText]
         public string Teachers_Password { get; set; }
+
 
 
         [Display(Name = "Confirm Password")]
@@ -81,15 +94,29 @@ namespace ResultManagement.Models
         public string Teachers_Confirm_Password { get; set; }
 
 
+
+        [Required]
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }
 
 
+
+        [Required]
+        [Display(Name = "Image File")]
         public HttpPostedFileBase ImageFile { get; set; }
 
 
+
+        [Required]
+        [Display(Name = "Remaining Credit")]
         public float Teacher_RemainingCredit { get; set; }
+
+
+        [Required]
+        [Display(Name = "Total Credit")]
         public float Teacher_TotalCredt { get; set; }
+
+
 
         public List<Thesis> Theses { get; set; }
 

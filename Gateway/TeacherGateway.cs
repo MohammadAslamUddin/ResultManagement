@@ -317,7 +317,7 @@ namespace ResultManagement.Gateway
             Command.Parameters["tnum"].Value = entry.TotalNumber;
 
             Command.Parameters.Add("atten", SqlDbType.Float);
-            Command.Parameters["atten"].Value = entry.Attendence;
+            Command.Parameters["atten"].Value = entry.Attendance;
 
             Command.Parameters.Add("resultCredit", SqlDbType.Float);
             Command.Parameters["resultCredit"].Value = entry.Grade_Point;
@@ -436,7 +436,7 @@ namespace ResultManagement.Gateway
             Command.Parameters["tnum"].Value = pResult.TotalNumber;
 
             Command.Parameters.Add("atten", SqlDbType.Float);
-            Command.Parameters["atten"].Value = pResult.Attendence;
+            Command.Parameters["atten"].Value = pResult.Attendance;
 
             Command.Parameters.Add("resultCredit", SqlDbType.Float);
             Command.Parameters["resultCredit"].Value = pResult.Grade_Point;
@@ -484,7 +484,7 @@ namespace ResultManagement.Gateway
                 result.CT_1 = Convert.ToDouble(Reader["ct_1"]);
                 result.CT_2 = Convert.ToDouble(Reader["ct_2"]);
                 result.CT_3 = Convert.ToDouble(Reader["ct_3"]);
-                result.Attendence = Convert.ToDouble(Reader["attendence"]);
+                result.Attendance = Convert.ToDouble(Reader["attendence"]);
                 result.Part_A = Convert.ToDouble(Reader["part_a"]);
                 result.Part_B = Convert.ToDouble(Reader["part_b"]);
                 result.Result_Cgpa = Convert.ToDouble(Reader["result_credit"]);

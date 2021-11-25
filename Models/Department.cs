@@ -9,9 +9,11 @@ namespace ResultManagement.Models
         public int Department_Id { get; set; }
 
 
+
         [Display(Name = "Department Title")]
         [Required(ErrorMessage = "Department Title Required")]
         public string Department_Title { get; set; }
+
 
 
         [Display(Name = "Department Code")]

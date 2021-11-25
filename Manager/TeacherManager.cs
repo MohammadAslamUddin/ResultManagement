@@ -82,7 +82,7 @@ namespace ResultManagement.Manager
         {
             if (!_teacherGateway.isResultAlreadySave(entry))
             {
-                entry.TotalNumber = entry.ClassTest1 + entry.ClassTest2 + entry.ClassTest3 + entry.PartA + entry.PartB + entry.Attendence;
+                entry.TotalNumber = entry.ClassTest1 + entry.ClassTest2 + entry.ClassTest3 + entry.PartA + entry.PartB + entry.Attendance;
                 entry.Grade_Point = GetGradePointByNumber(entry.TotalNumber);
                 entry.Letter_Grade = GetLetterGrade(entry.TotalNumber);
 
@@ -205,7 +205,7 @@ namespace ResultManagement.Manager
         {
             if (!_teacherGateway.isResultAlreadyPracticalSave(pResult))
             {
-                pResult.TotalNumber = pResult.Viva + pResult.Quiz + pResult.Lab_Report + pResult.Attendence;
+                pResult.TotalNumber = pResult.Viva + pResult.Quiz + pResult.Lab_Report + pResult.Attendance;
                 pResult.Grade_Point = GetGradePointByNumber((float)(pResult.TotalNumber * 2));
                 pResult.Letter_Grade = GetLetterGrade((float)(pResult.TotalNumber * 2));
 
