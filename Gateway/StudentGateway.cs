@@ -305,15 +305,15 @@ namespace ResultManagement.Gateway
                 SemesterResult course = new SemesterResult();
                 course.Course_Code = Reader["course_code"].ToString();
                 course.Course_Name = Reader["course_title"].ToString();
-                course.Ct1 = Convert.ToDouble(Reader["ct_1"]);
-                course.Ct2 = Convert.ToDouble(Reader["ct_2"]);
-                course.Ct3 = Convert.ToDouble(Reader["ct_3"]);
+                course.CT_1 = Convert.ToDouble(Reader["ct_1"]);
+                course.CT_2 = Convert.ToDouble(Reader["ct_2"]);
+                course.CT_3 = Convert.ToDouble(Reader["ct_3"]);
                 course.Part_A = Convert.ToDouble(Reader["part_a"]);
                 course.Part_B = Convert.ToDouble(Reader["part_b"]);
                 course.Grade_Point = Convert.ToDouble(Reader["result_credit"]);
                 course.Latter_Grade = Reader["latter_grade"].ToString();
                 course.Course_Credit = Convert.ToDouble(Reader["course_credit"]);
-                course.Attendence = Convert.ToDouble(Reader["attendence"]);
+                course.Attendance = Convert.ToDouble(Reader["attendence"]);
 
                 credit_hour += Convert.ToDouble(Reader["course_credit"]);
 
