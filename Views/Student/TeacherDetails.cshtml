@@ -1,0 +1,77 @@
+﻿@using ResultManagement.Models
+@model ResultManagement.Models.TeacherInfo
+
+@{
+    ViewBag.Title = "TeacherDetails";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    List<Thesis> theses = Model.Theses;
+}
+
+
+@using (Html.BeginForm("TeacherDetails", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="box">
+                    <div id="overlay">
+                        <div class="trick">
+                            <center><img class="rounded-circle image" width="150px" src="@Url.Content(Model.ImagePath)"></center>
+                        </div>
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <table class="table table-bordered table-responsive d-lg-table">
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Teacher_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Teacher_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Teacher_Email)</td>
+                                <td>@Html.DisplayFor(model => model.Teacher_Email)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Teacher_Contact)</td>
+                                <td>@Html.DisplayFor(model => model.Teacher_Contact)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Teacher_Birth_Date)</td>
+                                <td>@Html.DisplayFor(model => model.Teacher_Birth_Date)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Teacher_Address)</td>
+                                <td>@Html.DisplayFor(model => model.Teacher_Address)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Department_Name)</td>
+                                <td>@Html.DisplayFor(model => model.Department_Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Designation)</td>
+                                <td>@Html.DisplayFor(model => model.Designation)</td>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <h2 class="text-black text-center">Thesis/Project Information</h2>
+                        <hr/>
+                        <table class="table table-bordered table-responsive">
+                            <tr>
+                                <th>Thesis Title</th>
+                                <th>Thesis Description</th>
+                            </tr>
+                            @foreach (Thesis item in theses)
+                            {
+                                <tr>
+                                    <td>@item.Thesis_Title</td>
+                                    <td>@item.Thesis_Description</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}

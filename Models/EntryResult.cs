@@ -17,7 +17,7 @@ namespace ResultManagement.Models
 
 
         [Required]
-        [Display(Name = "Student Registration No")]
+        [Display(Name = "Registration No")]
         public string Student_Reg { get; set; }
 
 
@@ -62,17 +62,17 @@ namespace ResultManagement.Models
 
 
         [Required]
-        [Display(Name = "Class Test No 1")]
+        [Display(Name = "Class Test 1")]
         public double ClassTest1 { get; set; }
 
 
         [Required]
-        [Display(Name = "Class Test No 2")]
+        [Display(Name = "Class Test 2")]
         public double ClassTest2 { get; set; }
 
 
         [Required]
-        [Display(Name = "Class Test No 3")]
+        [Display(Name = "Class Test 3")]
         public double ClassTest3 { get; set; }
 
 
@@ -127,7 +127,7 @@ namespace ResultManagement.Models
 
 
         [Required]
-        [Display(Name = "Student Registration No")]
+        [Display(Name = "Registration No")]
         public string Student_Reg { get; set; }
 
 

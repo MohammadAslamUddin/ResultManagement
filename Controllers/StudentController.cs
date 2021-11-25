@@ -14,8 +14,8 @@ namespace ResultManagement.Controllers
     {
         private readonly StudentManager _studentManager;
         private StudentInfo _student;
-        private UpdatePassword _updatePassword;
-        private UpdateImage _updateImage;
+        private readonly UpdatePassword _updatePassword;
+        private readonly UpdateImage _updateImage;
 
         public StudentController()
         {
@@ -176,6 +176,20 @@ namespace ResultManagement.Controllers
         {
             var printpdf = new ActionAsPdf("MakePdf", new { SemesterNo = semesterNo }) { FileName = "Result Sheet" };
             return printpdf;
+        }
+
+
+
+        public ActionResult ShowAllTeachers()
+        {
+            List<TeacherInfo> teachers = _studentManager.ShowAllTeacher();
+            return View(teachers);
+        }
+
+        public ActionResult TeacherDetails(int? id)
+        {
+            TeacherInfo teacher = _studentManager.TeachersDetails(id);
+            return View(teacher);
         }
     }
 }

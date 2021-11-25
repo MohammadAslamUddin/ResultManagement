@@ -29,7 +29,7 @@ namespace ResultManagement.Models
 
 
         [Required]
-        [Display(Name = "Course Semester No")]
+        [Display(Name = "Semester No")]
         public int CourseSemester { get; set; }
 
 

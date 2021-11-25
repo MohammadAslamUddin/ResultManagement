@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ResultManagement.Models.TeacherInfo>
+
+@{
+    ViewBag.Title = "ShowAllTeachers";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+
+@using (Html.BeginForm("ShowAllTeachers", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row py-5">
+                <div class="box">
+                    <h2 class="text-center">Teacher's List</h2>
+                    <br />
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Teacher_Name)</th>
+                                <th>@Html.DisplayNameFor(model => model.Designation)</th>
+                                <th>@Html.DisplayNameFor(model => model.Teacher_Email)</th>
+                                <th>@Html.DisplayNameFor(model => model.Teacher_Contact)</th>
+                                <th>@Html.DisplayNameFor(model => model.Teacher_Address)</th>
+                                <th>Buttons</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Teacher_Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Teacher_Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Teacher_Contact)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Teacher_Address)</td>
+                                    <td><button class="btn btn-outline-secondary btn_page">@Html.ActionLink("Details", "TeacherDetails", new { id = @item.Teacher_Id })</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-outline-secondary btn_page"><a href="/Admin/AddingNewTeacher">Add New Teacher</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}

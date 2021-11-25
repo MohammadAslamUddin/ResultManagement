@@ -96,5 +96,18 @@ namespace ResultManagement.Manager
         {
             return _studentGateway.GetCGPA(semesterNo);
         }
+
+        public List<TeacherInfo> ShowAllTeacher()
+        {
+            return _studentGateway.ShowAllTeacher();
+        }
+
+        public TeacherInfo TeachersDetails(int? id)
+        {
+            TeacherInfo teacher = _studentGateway.TeachersDetails(id);
+            teacher.Theses = _studentGateway.GetThesisInfo(id);
+
+            return (teacher);
+        }
     }
 }

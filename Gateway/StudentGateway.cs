@@ -400,5 +400,108 @@ namespace ResultManagement.Gateway
 
             return cgpa;
         }
+
+        public List<TeacherInfo> ShowAllTeacher()
+        {
+            Query = "SELECT * FROM Teacher";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            Reader = Command.ExecuteReader();
+            List<TeacherInfo> teachers = new List<TeacherInfo>();
+
+            while (Reader.Read())
+            {
+                TeacherInfo teacher = new TeacherInfo();
+
+                teacher.Teacher_Id = (int)Reader["teacher_id"];
+                teacher.Teacher_Name = Reader["teacher_name"].ToString();
+                teacher.Teacher_Email = Reader["teacher_email"].ToString();
+                teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
+                teacher.Teacher_Address = Reader["teacher_address"].ToString();
+                teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
+                teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
+                teacher.Designation = Reader["teacher_designation"].ToString();
+                teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
+                teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
+                teacher.Teacher_Birth_Date = (DateTime)Reader["teacher_date_of_birth"];
+                teacher.ImagePath = Reader["teacher_image"].ToString();
+
+                teachers.Add(teacher);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return teachers;
+        }
+
+        public TeacherInfo TeachersDetails(int? id)
+        {
+            Query = "SELECT * FROM Teacher inner join Department on Teacher.teacher_department = Department.department_id WHERE teacher_id = @id";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            TeacherInfo teacher = new TeacherInfo();
+
+            while (Reader.Read())
+            {
+                teacher.Teacher_Id = (int)Reader["teacher_id"];
+                teacher.Teacher_Name = Reader["teacher_name"].ToString();
+                teacher.Teacher_Email = Reader["teacher_email"].ToString();
+                teacher.Teacher_Contact = Reader["teacher_contact"].ToString();
+                teacher.Teacher_Birth_Date = (DateTime)Reader["teacher_date_of_birth"];
+                teacher.Teacher_Address = Reader["teacher_address"].ToString();
+                teacher.Teacher_Father_Name = Reader["teacher_fathers_name"].ToString();
+                teacher.Teacher_Mother_Name = Reader["teacher_mothers_name"].ToString();
+                teacher.Department_Id = (int)Reader["teacher_department"];
+                teacher.Department_Name = Reader["department_title"].ToString();
+                teacher.Department_Code = Reader["department_code"].ToString();
+                teacher.ImagePath = Reader["teacher_image"].ToString();
+                teacher.Designation = Reader["teacher_designation"].ToString();
+                teacher.Teacher_RemainingCredit = (float)Convert.ToDouble(Reader["remaining_course_credit"]);
+                teacher.Teacher_TotalCredt = (float)Convert.ToDouble(Reader["teacher_course_credit"]);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return teacher;
+        }
+
+        public List<Thesis> GetThesisInfo(int? id)
+        {
+            Query = "SELECT thesis_title, thesis_description FROM Thesis WHERE teacher_id = @id;";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("id", SqlDbType.Int);
+            Command.Parameters["id"].Value = id;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            List<Thesis> theses = new List<Thesis>();
+
+            while (Reader.Read())
+            {
+                Thesis thesis = new Thesis();
+
+                thesis.Thesis_Title = Reader["thesis_title"].ToString();
+                thesis.Thesis_Description = Reader["thesis_description"].ToString();
+
+                theses.Add(thesis);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return theses;
+        }
     }
 }
