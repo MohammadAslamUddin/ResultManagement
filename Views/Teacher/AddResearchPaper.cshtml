@@ -28,7 +28,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Update your Password</h4>
                         </div>
-                        <table class="table table-borderless table-responsive tabtab">
+                        <table class="table table-borderless table-responsive d-block">
                             <tbody>
                                 <tr>
                                     <td>@Html.LabelFor(model => model.Thesis_Title)</td>
@@ -42,11 +42,11 @@
                                 </tr>
 
                                 <tr>
-                                    <td><input type="submit" value="Save" class="btn btn-outline-secondary btn_page" /></td>
+                                    <td colspan="2" class="text-center"><input type="submit" value="Save" class="btn btn-outline-secondary btn_page" /></td>
                                     @Html.HiddenFor(model => model.Teacher_Id)
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="text-center">@Html.ValidationSummary(true, @message, new { @class = "text-danger" })</td>
+                                    <td colspan="2" class="text-center">@Html.ValidationSummary(true, @message, new { @class = "text-danger" })</td>
                                 </tr>
                             </tbody>
                         </table>
