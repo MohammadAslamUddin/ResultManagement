@@ -355,3 +355,6 @@ input, select, textarea {
     width: 70% !important;
 }
 
+.field-validation-error {
+    color: red;
+}

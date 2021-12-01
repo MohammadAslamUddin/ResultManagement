@@ -83,19 +83,9 @@ namespace ResultManagement.Controllers
         public ActionResult UpdatePassword(UpdatePassword updatePassword)
         {
             ViewBag.Student = _studentManager.GetStudentDetails();
-            if (ModelState.IsValid)
-            {
-                string rowAffected = _studentManager.UpdatePassword(updatePassword);
-                if (rowAffected.Equals("Updated"))
-                {
-                    return View(updatePassword);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            return View();
+
+            ViewBag.Message = _studentManager.UpdatePassword(updatePassword);
+            return View(updatePassword);
         }
 
 
@@ -115,28 +105,18 @@ namespace ResultManagement.Controllers
         public ActionResult UpdateImage(UpdateImage image)
         {
             ViewBag.Student = _studentManager.GetStudentDetails();
-            if (ModelState.IsValid)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
-                string extension = Path.GetExtension(image.ImageFile.FileName);
-                fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
-                image.ImagePath = "~/Image/Student/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Image/Student/"), fileName);
-                image.ImageFile.SaveAs(fileName);
+
+            string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
+            string extension = Path.GetExtension(image.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
+            image.ImagePath = "~/Image/Student/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/Student/"), fileName);
+            image.ImageFile.SaveAs(fileName);
 
 
-                string rowAffected = _studentManager.UpdateImage(image);
+            ViewBag.Message = _studentManager.UpdateImage(image);
 
-                if (rowAffected.Equals("Updated"))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            return View();
+            return View(image);
         }
 
         [HttpGet]
