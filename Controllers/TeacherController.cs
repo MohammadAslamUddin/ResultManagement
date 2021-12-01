@@ -12,8 +12,7 @@ namespace ResultManagement.Controllers
     public class TeacherController : Controller
     {
         private readonly TeacherManager _teacherManager;
-        private TeacherInfo _teacher;
-        private Course course;
+
         public TeacherController()
         {
             _teacherManager = new TeacherManager();
