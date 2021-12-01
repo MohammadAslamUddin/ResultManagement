@@ -45,19 +45,11 @@ namespace ResultManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdatePassword(UpdatePassword updatePassword)
         {
-            if (ModelState.IsValid)
-            {
-                string rowAffected = _teacherManager.UpdatePassword(updatePassword);
-                if (rowAffected.Equals("Updated"))
-                {
-                    return View(updatePassword);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            return View();
+            ViewBag.teacher = _teacherManager.GetTeacherDetails();
+
+            ViewBag.Message = _teacherManager.UpdatePassword(updatePassword);
+
+            return View(updatePassword);
         }
 
 
@@ -79,28 +71,17 @@ namespace ResultManagement.Controllers
         {
             ViewBag.teacher = _teacherManager.GetTeacherDetails();
 
-            if (ModelState.IsValid)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
-                string extension = Path.GetExtension(image.ImageFile.FileName);
-                fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
-                image.ImagePath = "~/Image/Teacher/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Image/Teacher/"), fileName);
-                image.ImageFile.SaveAs(fileName);
+
+            string fileName = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
+            string extension = Path.GetExtension(image.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmdd") + extension;
+            image.ImagePath = "~/Image/Teacher/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/Teacher/"), fileName);
+            image.ImageFile.SaveAs(fileName);
 
 
-                string rowAffected = _teacherManager.UpdateImage(image);
-
-                if (rowAffected.Equals("Updated"))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-            return View();
+            ViewBag.Message = _teacherManager.UpdateImage(image);
+            return View(image);
         }
 
         [HttpGet]
@@ -143,11 +124,10 @@ namespace ResultManagement.Controllers
             ViewBag.teacher = _teacherManager.GetTeacherDetails();
             ViewBag.courseinfo = _teacherManager.GetCourseDetails(entry.Course_Id);
             ViewBag.Students = _teacherManager.AllStudentsReg(entry.Course_Id);
-            if (ModelState.IsValid)
-            {
-                ViewBag.message = _teacherManager.WrittenPartSave(entry);
-            }
-            return View();
+
+            ViewBag.message = _teacherManager.WrittenPartSave(entry);
+
+            return View(entry);
         }
 
 
@@ -168,11 +148,10 @@ namespace ResultManagement.Controllers
             ViewBag.teacher = _teacherManager.GetTeacherDetails();
             ViewBag.courseinfo = _teacherManager.GetCourseDetails(practicalPartResult.Course_Id);
             ViewBag.Students = _teacherManager.AllStudentsReg(practicalPartResult.Course_Id);
-            if (ModelState.IsValid)
-            {
-                ViewBag.message = _teacherManager.PracticalPartSave(practicalPartResult);
-            }
-            return View();
+
+            ViewBag.message = _teacherManager.PracticalPartSave(practicalPartResult);
+
+            return View(practicalPartResult);
         }
 
 
@@ -218,7 +197,7 @@ namespace ResultManagement.Controllers
 
             ViewBag.Message = _teacherManager.AddResearchInfo(thesis, id);
 
-            return View();
+            return View(thesis);
         }
     }
 }

@@ -7,6 +7,7 @@
     TeacherInfo teacher = ViewBag.teacher;
     Course course = ViewBag.courseinfo;
     List<SelectListItem> students = ViewBag.Students;
+    string message = ViewBag.message;
 }
 
 @using (Html.BeginForm("WrittenPartResult", "Teacher", FormMethod.Post))
@@ -86,13 +87,14 @@
                                     <td>@Html.TextBoxFor(n => n.Attendance, new { id = "attand" })</td>
                                     <td>@Html.ValidationMessageFor(n => n.Attendance)</td>
                                 </tr>
+                                <tr class="text-center">
+                                    <td colspan="2"><input type="submit" value="Save" class="btn btn-outline-secondary btn_page" /></td>
+                                </tr>
                                 <tr>
-                                    <td></td>
-                                    <td><input type="submit" value="Save" class="btn btn-outline-secondary btn_page"/></td>
+                                    <td colspan="3" class="text-center"><label>@message</label></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <label id="message" class="text-danger">@ViewBag.message</label>
                     </div>
                 </div>
             </div>
