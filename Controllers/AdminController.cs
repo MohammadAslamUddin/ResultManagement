@@ -142,7 +142,7 @@ namespace ResultManagement.Controllers
             teacher.ImageFile.SaveAs(fileName);
 
             ViewBag.Message = _adminManager.SaveTeacher(teacher);
-            return View();
+            return View(teacher);
         }
 
 
