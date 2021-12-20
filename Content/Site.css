@@ -202,11 +202,11 @@ input, select, textarea {
     border-color: rgb(84, 106, 92);
 }
 
-    .btn-outline-purple:hover {
-        color: #fff;
-        background-color: rgb(84, 106, 92);
-        border-color: rgb(84, 106, 92);
-    }
+.btn-outline-purple:hover {
+    color: #fff;
+    background-color: rgb(84, 106, 92);
+    border-color: rgb(84, 106, 92);
+}
 
 
 .bg-op6 {
