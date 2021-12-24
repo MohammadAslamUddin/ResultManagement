@@ -67,7 +67,7 @@ namespace ResultManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateImage(UpdateImage image)
+        public ActionResult UpdateImage(int? id, UpdateImage image)
         {
             ViewBag.teacher = _teacherManager.GetTeacherDetails();
 
